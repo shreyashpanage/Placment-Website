@@ -16,7 +16,6 @@ angular
       ug: [
         "Civil Engineering",
         "Electrical Engineering",
-        "Chemical Engineering",
         "Mechanical Engineering",
         "Computer Technology",
         
@@ -62,7 +61,6 @@ angular
         ug: [
           "Civil Engineering",
           "Electrical Engineering",
-          "Chemical Engineering",
           "Mechanical Engineering",
           "Computer Technology",
           
