@@ -7,6 +7,7 @@ mongoose.set('useCreateIndex', true);
 // Backend mongoose validators
 var nameValidator = [
     validate({
+
         validator: 'matches',
         arguments: /^(([a-zA-Z]{3,10})+[ ]+([a-zA-Z]{3,10})+)+$/,
         message : 'Name must have minimum 3 and maximum 20 character, Space in between the name, No special letters or numbers!'
