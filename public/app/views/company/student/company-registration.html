@@ -68,8 +68,28 @@
                 </div>
             </div>
         </div>
+
+
     </div>
 </div>
+
+<!-- Company Calender -->
+
+<center><h2>Upcoming Companies Calender</h2></center>
+<center>
+    <iframe src="https://calendar.google.com/calendar/embed?src=813f5a93d4b027114b145b4da5060f723b223e45d75d8405be0a4fb3b3757ccd%40group.calendar.google.com&ctz=Asia%2FKolkata"
+        style="border: 0" width="80%" height="700vh" frameborder="0" scrolling="no"></iframe>
+</center>
+
+
+<div class="d-grid gap-2">
+    <button class="btn btn-outline-success" type="button" ng-show="main.isLoggedIn && main.authorized" style="text-decoration: none; color: white;"> <a
+        href="https://docs.google.com/forms/d/e/1FAIpQLScuRbKIoReLxplWYhYgqrFMQnIG2l2eMJxpB-cp5sBNZK4qig/viewform"
+        aria-expanded="false">Add Event</a></button>
+</div>
+
+<br>
+
 <div class="row" ng-show="!companyRegistration.fetchedUpcomingCompanies">
     <div class="col-md-12">
         <div class="card-body text-center">
