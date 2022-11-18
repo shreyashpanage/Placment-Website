@@ -22,6 +22,13 @@ var app = angular.module('userRoutes', ['ngRoute'])
                authenticated : false
            })
 
+           .when('/upcoming-events', {
+            templateUrl : '/app/views/company/student/upcomingEvents.html',
+            authenticated : true,
+            controller : 'companyRegistrationCtrl',
+            controllerAs : 'companyRegistration'
+        })
+
            .when('/activate/:token', {
                templateUrl : '/app/views/authentication/activation/activate.html',
                authenticated : false,
