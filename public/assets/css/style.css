@@ -95,6 +95,10 @@
     border-radius: 10px;
 }
 
+.right{
+    align-content: right;
+}
+
 .interviews {
     -webkit-filter: blur(5px);
     -moz-filter: blur(5px);
@@ -118,6 +122,10 @@
     opacity: 0;
     overflow: hidden;
 }
+nav {
+    position: fixed;
+    top: 0px;
+  }
 
 /* add generic styling for the editor */
 .ta-root.focussed > .ta-scroll-window.form-control {
@@ -301,4 +309,16 @@
 }
 .editor-box {
     white-space: pre-line;
+}
+
+.innertext{
+font-size: large;
+margin-bottom: 50px;
+}
+
+.abouttitle{
+    color: #6466eb;
+  font-size: 30px;
+  font-weight:normal;
+  margin-top: 70px;
 }
