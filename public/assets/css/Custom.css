@@ -31,6 +31,10 @@ img {
   color: #6466eb;
   font-size: 48px;
   font-weight: bold;
+ background:rgb(245, 186, 229)
+ ;padding-top:25px ;
+ padding-bottom:25px;
+  border-radius: 55px;
 }
 
 .profile {
@@ -143,11 +147,11 @@ img {
 }
 
 /*FOOTER CSS*/
-footer {
+/* footer {
   background-color: rgb(65, 54, 54);
   color: #fff;
   padding: 20px;
-}
+} */
 
 .content {
   width: 24%;
@@ -187,7 +191,7 @@ ul.admenus li {
   float: left;
   display: inline;
   position: relative;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 400;
   text-transform: uppercase;
 }
@@ -197,17 +201,17 @@ ul.admenus li a {
   line-height: 50px;
   padding: 0 20px;
   text-decoration: none;
-  color: #2c2c2c;
-  font-family: 'Oswald';
-  font-size: 13px;
+  color: white; 
+  /* font-family: 'Oswald'; */
+  font-size: 12px;
   font-weight: 400;
   transition: all 0.3s ease-in-out;
 }
 
 ul.admenus li a:hover,
 ul.admenus li a.hoverover {
-  background: #0060b1;
-  color: #fff;
+  background: #fafbfc;
+  color: rgb(12, 12, 12);
 }
 
 ul.admenus ul {
@@ -226,6 +230,7 @@ ul.admenus ul li {
   float: none;
   min-width: 160px;
   background: blue;
+  background: #6238cd;
   text-shadow: none;
 }
 
@@ -233,12 +238,12 @@ ul.admenus ul li a {
   text-transform: none;
   font-weight: normal;
   color: #aaa;
-  font-family: 'Arial';
+  /* font-family: 'Arial'; */
 }
 
 ul.admenus ul li a:hover,
 ul.adajaxmenu ul li a.hover {
-  background: #0060b1;
+  background: #6238cd;
 }
 
 ul.admenus ul ul {
@@ -255,7 +260,7 @@ ul.adajaxmenu li div.submenu {
   top: 100%;
   overflow: hidden;
   min-height: 150px;
-  background: #f0f0f0;
+  background: #6238cd;
   -moz-transform: translate(0, 30px);
   -webkit-transform: translate(0, 30px);
   -o-transform: translate(0, 30px);
@@ -296,7 +301,7 @@ ul.adajaxmenu ul.verticlemenu {
   left: 0;
   top: 0;
   bottom: 0;
-  background: #202020;
+  background: white;
 }
 
 ul.adajaxmenu ul.postslist {
@@ -342,8 +347,8 @@ ul.adajaxmenu ul.postslist li a {
   line-height: 1.4;
   padding: 0 !important;
   color: #666;
-  font-family: 'Arial';
-  font-size: 12px;
+  /* font-family: 'Arial'; */
+  font-size: 10px;
   transition: all 0.3s ease-in-out;
 }
 
@@ -376,7 +381,7 @@ ul.adajaxmenu .menuArrow {
 }
 
 #adajaxmenu {
-  background: #fff;
+  background: #6238cd;
   height: 50px;
   width: 100%;
   position: relative;
@@ -389,7 +394,7 @@ ul.adajaxmenu .menuArrow {
 
 
 #logo:hover{
-  background-color: white;
+  background-color: #6238cd;
 }
 
 
