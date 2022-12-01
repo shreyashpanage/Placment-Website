@@ -20,6 +20,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+
     <!-- Font library -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
@@ -63,105 +68,47 @@
         </li>
         <!--                         
                         <li ng-show="main.isLoggedIn"> <a class="nav-toggler waves-effect waves-dark" href="/company-registration" aria-expanded="false"><i class="icon-briefcase"></i><span class="hide-menu">Company Registration</span></a></li> -->
-        <li ng-show="main.isLoggedIn && main.authorized"><a href="/profile" aria-expanded="false">{{ main.student_name }}</a></li>
-        <!-- <li ng-show="main.isLoggedIn"> <a class="nav-toggler waves-effect waves-dark" href="/"
-            aria-expanded="false"><i class="ti-home"></i><span class="hide-menu">Home</span></a></li>
-        <li ng-show="!main.isLoggedIn && !main.authorized"><a href="/login" aria-expanded="false">Login</a></li>
+        <li ng-show="main.isLoggedIn"><a href="/company-registration" aria-expanded="false">Updates</a></li>
+
+            
+        <!-- <li ng-show="main.isLoggedIn && !main.authorized">
+            <a href="javascript:void(0)" aria-expanded="false">User Profile</a>
+            <ul aria-expanded="false">
+                <li><a href="/profile">Profile Page </a></li>
+                <li><a href="/red-flag-history">Red Flag History </a></li>
+                <li><a href="/timeline">Timeline </a></li>
+                <li><a href="/notifications">Notifications </a></li>
+                <li><a href="/achieng-show=" main.isLoggedIn && !main.authorized"vement">Achievement </a></li>
+                <li><a href="/contributions">Contributions </a></li>
+                <li><a href="/settings">Account Settings </a></li>
+            </ul>
+        </li> -->
+
         <li><a href="/team" aria-expanded="false">Team</a></li>
         <li><a href="/technical" aria-expanded="falCompany Registrationse">Developer</a></li>
-        <li><a href="/contact" aria-expanded="false">Contact Us</a></li>
-        <li> <a class="nav-toggler waves-effect waves-dark" href="/placements" aria-expanded="false"><i
-            class="ti-crown"></i><span class="hide-menu">Hall of Fame &nbsp;</span></a></li>
-
+        <li><a href="/contact" aria-expanded="false">Contact</a></li>
+        <li><a href="/placements" aria-expanded="false">Hall of Fame</a></li>
+        <li><a href="/notifications" aria-expanded="false" ng-show="main.isLoggedIn">All Notifications</a></li>
+        <li><a href="/interview-experiences" aria-expanded="false" ng-show="main.isLoggedIn">Interview Experiences</a></li>
         <li ng-show="main.isLoggedIn && main.authorized"> <a href="/file" aria-expanded="false">Upload Student
-                details</a></li> -->
-                <li ng-show="!main.authorized"> <a class="nav-toggler waves-effect waves-dark" href="/"
-              aria-expanded="false"><i class="ti-home"></i><span class="hide-menu">Home</span></a></li>
-          <li ng-show="!main.isLoggedIn"> <a class="nav-toggler waves-effect waves-dark" href="/login"
-              aria-expanded="false"><i class="icon-login"></i><span class="hide-menu">Login </span></a></li>
-          <li ng-show="main.isLoggedIn"> <a class="nav-toggler waves-effect waves-dark" href="/upcoming-events"
-                aria-expanded="false"><i class="icon-calender"></i><span class="hide-menu">Upcoming
-                  Events</span></a></li>
-          <li ng-show="!main.isLoggedIn"> <a class="nav-toggler waves-effect waves-dark" href="/company-registration"
-              aria-expanded="false"><i class="icon-briefcase"></i><span class="hide-menu">Company
-                Registration</span></a></li>
+                details</a></li>
 
 
-                <li ng-show="!main.authorized"> <a class="nav-toggler waves-effect waves-dark" href="/interview-experiences"
-                    aria-expanded="false"><i class="icon-rocket"></i><span class="hide-menu">Interview Experiences </span></a>
-                </li>
-
-                <li ng-show="main.authorized"> <a class="nav-toggler waves-effect waves-dark" href="/moderator"
-                    aria-expanded="false"><i class="ti-stamp"></i><span class="hide-menu">Moderator </span></a>
-                </li>
-      
-                
-
-
-
-
-          <li ng-show="main.isLoggedIn && main.authorized"> <a class="nav-toggler waves-effect waves-dark"
-              href="/add-new-company" aria-expanded="false"><i class="icon-briefcase"></i><span class="hide-menu">Add
-                New Company</span></a></li>
-          <!-- <li ng-show="main.isLoggedIn && main.authorized"> <a class="nav-toggler waves-effect waves-dark"
-              href="/admin-management" aria-expanded="false"><i class="icon-fire"></i><span class="hide-menu">Admin
-                Management</span></a></li> -->
-          <li ng-show="main.isLoggedIn"> <a class="nav-toggler waves-effect waves-dark" href="/announcements"
-              aria-expanded="false"><i class="ti-announcement"></i><span class="hide-menu">Announcements </span></a>
-          </li>
-          <li ng-show="main.isLoggedIn && !main.authorized"> <a class="has-arrow waves-effect waves-dark"
-              href="javascript:void(0)" aria-expanded="false"><i class="icon-user"></i><span class="hide-menu">User
-                Profile</span></a>
-            <ul aria-expanded="false" class="collapse">
-              <li><a class="nav-toggler" href="/profile">Profile Page <i class="ti-user text-success"></i></a></li>
-              <li><a class="nav-toggler" href="/red-flag-history">Red Flag History <i
-                    class="ti-alert text-danger"></i></a></li>
-              <li><a class="nav-toggler" href="/timeline">Timeline <i class="ti-stats-up text-info"></i></a></li>
-              <li><a class="nav-toggler" href="/notifications">Notifications <i class="ti-bell text-info"></i></a></li>
-              <li><a class="nav-toggler" href="/achievement">Achievement <i class="ti-medall text-danger"></i></a></li>
-              <li><a class="nav-toggler" href="/contributions">Contributions <i class="ti-crown text-success"></i></a>
-              </li>
-              <li><a class="nav-toggler" href="/settings">Account Settings <i class="ti-settings text-success"></i></a>
-              </li>
+        <li ng-show="main.isLoggedIn">
+            <a href="#">{{ main.student_name }}</a>
+            <ul>
+                <li><a href="#"> {{ main.permission}} </a></li>
+                <li><a href="/profile">My Profile</a></li>
+                <li><a href="/notifications">Notifications</a></li>
+                <li><a href="/timeline" ng-show="!main.authorized">Timeline</a></li>
+                <li><a href="/achievement">Achievement</a></li>
+                <li><a href="/red-flag-history">Red Flag History </a></li>
+                <li><a href="/contributions">Contributions </a></li>
+                <li><a href="/settings">Account Settings </a></li>
             </ul>
-          </li>
-          <li> <a class="nav-toggler waves-effect waves-dark" href="/team" aria-expanded="false"><i
-                class="icon-people"></i><span class="hide-menu">Team</span></a></li>
-          <li> <a class="nav-toggler waves-effect waves-dark" href="/technical" aria-expanded="false"><i
-                class="icon-screen-desktop"></i><span class="hide-menu">Developer</span></a></li>
-          <li> <a class="nav-toggler waves-effect waves-dark" href="/contact" aria-expanded="false"><i
-                class="icon-phone"></i><span class="hide-menu">Contact Us </span></a></li>
-          <li> <a class="nav-toggler waves-effect waves-dark" href="/placements" aria-expanded="false"><i
-                class="ti-crown"></i><span class="hide-menu">Hall of Fame &nbsp;</span></a></li>
-
-
-        <li ng-show="main.isLoggedIn" class="nav-item dropdown" >
-            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="#" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false"><img src="assets/images/profile/{{ main.gender }}.png" alt="user"
-                class="img-circle" width="30"></a>
-            <div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">
-              <span class="with-arrow"><span class="bg-primary"></span></span>
-              <div class="d-flex no-block  p-15 bg-primary text-white m-b-10 float-end" align:right>
-                <div class=""><img src="assets/images/profile/{{ main.gender}}.png" alt="user" class="img-circle"
-                    width="60"></div>
-                <div class="m-l-10">
-                  <h4 class="m-b-0">{{ main.student_name }}</h4>
-                  <p class=" m-b-0"> {{ main.permission.toUpperCase() }} </p>
-                </div>
-              </div>
-              <a class="dropdown-item" href="/profile"><i class="ti-user m-r-5 m-l-5"></i> My Profile</a>
-              <a class="dropdown-item" href="/notifications"><i class="ti-user m-r-5 m-l-5"></i> My Notifications</a>
-              <a class="dropdown-item" href="/timeline" ng-show="!main.authorized"><i class="ti-stats-up m-r-5 m-l-5"></i>
-                My Timeline</a>
-              <a class="dropdown-item" href="/achievement" ng-show="!main.authorized"><i
-                  class="ti-medall m-r-5 m-l-5"></i> My Achievements</a>
-              <a class="dropdown-item" href="/announcements"><i class="ti-announcement m-r-5 m-l-5"></i> Announcements</a>
-              <a class="dropdown-item" href="/settings"><i class="ti-settings m-r-5 m-l-5"></i> Account Settings</a>
-              <div class="dropdown-divider"></div>
-              <div class="p-l-30 p-10"><a href="#" ng-click="main.logout();"
-                  class="btn btn-sm btn-success btn-rounded">Logout</a></div>
-            </div>
-          </li>
+        </li>
+        <li ng-show="main.isLoggedIn"><a href="#" ng-click="main.logout();">Logout</a></li>
+        <li ng-show="!main.isLoggedIn"><a href="/login" aria-expanded="false">Log In</a></li>
     </ul>
 
 
@@ -319,9 +266,15 @@
 
     <script src='/assets/js/textAngular/textAngular.min.js'></script>
 
-    <script src="/assets/js/statistics/PlacementComparision.js"></script>
-    <script src="/assets/js/statistics/PlacementStats.js"></script>
     <script src="/assets/js/Custom.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+        integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
 </body>

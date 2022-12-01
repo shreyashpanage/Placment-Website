@@ -16,6 +16,21 @@ exports.getAll = (req, res) => {
         })
 }
 
+exports.getAllPending = (req, res) => {
+
+    Interview
+        .find({ status : 'pending' })
+        .select('title experience author_name tags created_at')
+        .lean()
+        .then(pending => {
+            res.status(200).json({ success : true, interviews : pending })
+        })
+        .catch(err => {
+            console.error(err);
+            res.status(200).json({ success : false, message : 'Something went wrong!'})
+        })
+}
+
 exports.getAll_admin = (req, res) => {
 
     Interview

@@ -5,8 +5,8 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-12 text-center">
-                        <h3>Interview Experiences</h3>
-                        <h6 class="font-light m-t-0">Read about the interview processes your college-mates have been through..</h6>
+                        <h3>Pending Interview Experiences</h3>
+                        <h6 class="font-light m-t-0">Approve relevent interview experiences of students</h6>
                     </div>
                 </div>
             </div>
@@ -53,14 +53,12 @@
         <div class="col-lg-3">
             <div class="card cc-widget">
                 <div class="card-body">
-                    <a href="/compose" class="btn btn-block btn-success"> <i class="fa fa-pencil"></i> &nbsp; Compose</a>
-                    <a ng-if="main.authorized" href="/pending-experiences" class="btn btn-block btn-success"> <i class="fa fa-pencil"></i> &nbsp; Pending Interview</a>
-                    <button type="button" class="btn btn-block btn-outline-secondary text-primary" data-toggle="modal" data-target="#guidelinesModal"> Guidelines</button>
+                    <a ng-if="main.authorized" href="/interview-experiences" class="btn btn-block btn-success"> <i class="fa fa-pencil"></i> &nbsp; Approved Interview</a>
                 </div>
             </div>
         </div>
 
-        <!-- All Approved Interview Experience -->
+        <!-- All Pending Interview Experience -->
         <div class="col-lg-9">
             <div class="card cc-widget">
                 <div class="card-body">
@@ -72,7 +70,8 @@
                     </form>
                 </div>
             </div>
-            <div class="card cc-widget" ng-repeat="experience in results=(interview.interviews | filter : searchInterview | orderBy : '-created_at')">
+            <h1>Pending Interview Experiences for Approval</h1>
+            <div class="card cc-widget" ng-repeat="experience in results=(interview.pending | filter : searchInterview | orderBy : '-created_at')">
                 <div class="card-body">
                     <div class="d-flex no-block flex-row">
                         <div class="round align-self-center round-primary m-t-10 m-b-10"><i class="icon-rocket"></i></div>

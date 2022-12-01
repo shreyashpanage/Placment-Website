@@ -229,6 +229,7 @@ ul.admenus ul li {
   z-index: 72;
   float: none;
   min-width: 160px;
+  background: blue;
   background: #6238cd;
   text-shadow: none;
 }
@@ -290,8 +291,8 @@ ul.adajaxmenu ul li {
 }
 
 ul.adajaxmenu ul li {
-  background: none !important;
-  float: none !important;
+  background: none;
+  float: none;
 }
 
 ul.adajaxmenu ul.verticlemenu {
@@ -393,10 +394,14 @@ ul.adajaxmenu .menuArrow {
 
 
 #logo:hover{
-  background-color: white;
+  background-color: #6238cd;
 }
 
 
 nav{
   width: 100%;
+}
+
+#sub-nav{
+  background-color: white;
 }
