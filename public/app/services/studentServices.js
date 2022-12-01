@@ -116,6 +116,11 @@ angular.module('studentServices',[])
         return $http.get('/api/interview/getAll');
     };
 
+    // get all pending interview experiences
+    studentFactory.getAllPendingInterviewExperiences = function() {
+        return $http.get('/api/interview/getAllPending');
+    };
+
     // get interview experience
     studentFactory.getExperience = function(experience_id) {
         return $http.get('/api/interview/getOne/' + experience_id);

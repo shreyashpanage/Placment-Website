@@ -5,6 +5,7 @@ const authMiddleware = require('../middlewares/auth.middleware');
 
 // todo Replace getAll and getAll_admin => getAll with permission filter
 router.get('/getAll', jwtMiddleware.verify, authMiddleware.ensureLoggedIn, interviewController.getAll);
+router.get('/getAllPending', jwtMiddleware.verify, authMiddleware.ensureLoggedIn, interviewController.getAllPending);
 router.get('/getAll_admin', jwtMiddleware.verify, authMiddleware.ensureOfficialPlacementTeam, interviewController.getAll_admin);
 router.get('/getOne/:experience_id', jwtMiddleware.verify, authMiddleware.ensureLoggedIn, interviewController.getOne);
 router.post('/add', jwtMiddleware.verify, authMiddleware.ensureLoggedIn, interviewController.add);

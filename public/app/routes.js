@@ -121,6 +121,13 @@ var app = angular.module('userRoutes', ['ngRoute'])
                controllerAs : 'interview'
            })
 
+           .when('/pending-experiences', {
+                templateUrl : '/app/views/interview-experiences/pending-experiences.html',
+                authenticated : true,
+                controller : 'pendingCtrl',
+                controllerAs : 'interview'
+            })
+
            .when('/experience/:experience_id', {
                templateUrl : '/app/views/interview-experiences/experience.html',
                authenticated : true,

@@ -534,6 +534,23 @@ angular.module('studentController',['studentServices','textAngular','fileModelDi
     })
 })
 
+// Get all Pending experiences
+.controller('pendingCtrl', function (student) {
+
+    let app = this;
+
+    // get all interview experiences
+    student.getAllPendingInterviewExperiences().then(function (data) {
+        if(data.data.success) {
+            app.pending = data.data.interviews;
+            app.fetchedInterviewExperiences = true;
+        } else {
+            app.fetchedInterviewExperiences = true;
+            app.errorMsg = data.data.message;
+        }
+    })
+})
+
 // read experience ctrl
 .controller('experienceCtrl', function (student, $routeParams, admin) {
 
