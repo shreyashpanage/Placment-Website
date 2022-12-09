@@ -71,6 +71,18 @@ var userSchema = new mongoose.Schema({
     cgpa : {
         type : String,
     },
+    placement_status : {
+        type : String,
+        default : 'Unplaced'
+    },
+    year_gap : {
+        type : String,
+        default : 'No'
+    },
+    Back : {
+        type : Number,
+        default : 0
+    },
     matric_marks : {
         type : String
     },

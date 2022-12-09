@@ -67,6 +67,7 @@
                     <span>
                         <h3 class="card-title">We've your resume! </h3>
                         <h6 class="card-subtitle">Now, you are all set for Placement session.<a target="_blank" href="/assets/uploads/resumes/{{ profile.userProfile.resume_url }}">&nbsp;<i class="ti ti-cloud-down"></i> </a></h6>
+                        <h5 class="card-subtitle">Refer this Resume Templates <a href="https://novoresume.com/editor/resume/c22253b0-f3c1-11ec-8635-f119f480f4f1" target="_blank">Click here...</a></h5>
                     </span>
                 </li>
 
@@ -288,6 +289,17 @@
                                         <label class="col-md-12">Address</label>
                                         <div class="col-md-12">
                                             <input type="text" placeholder="Enter your address" class="form-control form-control-line" ng-value="profile.userProfile.address" ng-model="profile.profileData.address" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label class="col-md-12">Placement Status</label>
+                                        <div class="col-md-12">
+                                            <input type="text" placeholder="Enter your address" class="form-control form-control-line" ng-value="profile.userProfile.placement_status" ng-model="profile.profileData.placement_status" value="{{profile.userProfile.cgpa}}" required>
                                         </div>
                                     </div>
                                 </div>
