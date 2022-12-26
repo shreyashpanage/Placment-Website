@@ -24,14 +24,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 
-          <!-- vendor -->
-    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
-  <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-    
 
     <!-- Font library -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -77,7 +69,20 @@
         <!--                         
                         <li ng-show="main.isLoggedIn"> <a class="nav-toggler waves-effect waves-dark" href="/company-registration" aria-expanded="false"><i class="icon-briefcase"></i><span class="hide-menu">Company Registration</span></a></li> -->
         <li ng-show="main.isLoggedIn"><a href="/company-registration" aria-expanded="false">Updates</a></li>
-        
+
+            
+        <!-- <li ng-show="main.isLoggedIn && !main.authorized">
+            <a href="javascript:void(0)" aria-expanded="false">User Profile</a>
+            <ul aria-expanded="false">
+                <li><a href="/profile">Profile Page </a></li>
+                <li><a href="/red-flag-history">Red Flag History </a></li>
+                <li><a href="/timeline">Timeline </a></li>
+                <li><a href="/notifications">Notifications </a></li>
+                <li><a href="/achieng-show=" main.isLoggedIn && !main.authorized"vement">Achievement </a></li>
+                <li><a href="/contributions">Contributions </a></li>
+                <li><a href="/settings">Account Settings </a></li>
+            </ul>
+        </li> -->
 
         <li><a href="/team" aria-expanded="false">Team</a></li>
         <li><a href="/technical" aria-expanded="falCompany Registrationse">Developer</a></li>
@@ -87,66 +92,40 @@
         <li><a href="/interview-experiences" aria-expanded="false" ng-show="main.isLoggedIn">Interview Experiences</a></li>
         <li ng-show="main.isLoggedIn && main.authorized"> <a href="/file" aria-expanded="false">Upload Student
                 details</a></li>
-               
 
-                
-            <li ng-show="main.isLoggedIn  && main.authorized" class="nav-item dropdown" >
-              
-              <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="#" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">company function</a>
-              <div class="dropdown-menu justify user-dd animated flipInY">
-                
-                <span class="with-arrow"><h1>company function</h1><span class="bg-primary"></span></span>
-                <div class="d-flex no-block  p-15 bg-primary text-white m-b-10 float-end" align:right>
-                  <div class=""><h4>Company Functions</h4></div>
-                 
-                </div>
-                <a href="/add-new-company" style="color: black;" aria-expanded="false" ng-show="main.isLoggedIn && main.authorized">Add new company</a>
-                  <a href="/editCompany/:company_id" style="color: black;" aria-expanded="false" ng-show="main.isLoggedIn && main.authorized">Edit Company</a>
-                  <a href="/company-registration" style="color: black;" aria-expanded="false" ng-show="main.isLoggedIn && main.authorized">Register Company</a>
 
-              </div>
-            </li>
-        <li ng-show="main.isLoggedIn" class="nav-item dropdown" >
-          <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="#" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false"><img src="assets/images/profile/{{ main.gender }}.png" alt="user"
-              class="img-circle" width="30"></a>
-          <div class="dropdown-menu justify user-dd animated flipInY">
-            <span class="with-arrow"><span class="bg-primary"></span></span>
-            <div class="d-flex no-block  p-15 bg-primary text-white m-b-10 float-end" align:right>
-              <div class=""><img src="assets/images/profile/{{ main.gender}}.png" alt="user" class="img-circle"
-                  width="60"></div>
-              <div class="m-l-10">
-                <h4 class="m-b-0">{{ main.student_name }}</h4>
-                <p class=" m-b-0"> {{ main.permission.toUpperCase() }} </p>
-              </div>
-            </div>
-            <a style="color:black ;" class="dropdown-item" href="/profile"><i class="ti-user m-r-5 m-l-5"></i> My Profile</a>
-            <a style="color:black ;" class="dropdown-item" href="/notifications"><i class="ti-user m-r-5 m-l-5"></i> My Notifications</a>
-            <a  style="color:black ;"class="dropdown-item" href="/timeline" ng-show="!main.authorized"><i class="ti-stats-up m-r-5 m-l-5"></i>
-              My Timeline</a>
-            <a  style="color:black ;"class="dropdown-item" href="/achievement" ng-show="!main.authorized"><i
-                class="ti-medall m-r-5 m-l-5"></i> My Achievements</a>
-            <a  style="color:black ;"class="dropdown-item" href="/announcements"><i class="ti-announcement m-r-5 m-l-5"></i> Announcements</a>
-            <a style="color:black ;" class="dropdown-item" href="/settings"><i class="ti-settings m-r-5 m-l-5"></i> Account Settings</a>
-            <div class="dropdown-divider"></div>
-            <div class="p-l-30 p-10"><a href="#" ng-click="main.logout();"
-                class="btn btn-sm btn-success btn-rounded">Logout</a></div>
-          </div>
+        <li ng-show="main.isLoggedIn">
+            <a href="#">{{ main.student_name }}</a>
+            <ul>
+                <li><a href="#"> {{ main.permission}} </a></li>
+                <li><a href="/profile">My Profile</a></li>
+                <li><a href="/notifications">Notifications</a></li>
+                <li><a href="/timeline" ng-show="!main.authorized">Timeline</a></li>
+                <li><a href="/achievement">Achievement</a></li>
+                <li><a href="/red-flag-history">Red Flag History </a></li>
+                <li><a href="/contributions">Contributions </a></li>
+                <li><a href="/settings">Account Settings </a></li>
+            </ul>
         </li>
-
-        
         <li ng-show="main.isLoggedIn"><a href="#" ng-click="main.logout();">Logout</a></li>
         <li ng-show="!main.isLoggedIn"><a href="/login" aria-expanded="false">Log In</a></li>
     </ul>
 
 
 
-    <header class="section-header text-center ">
-      <h1 class="animate__animated animate__fadeInDown heading " >YCCE T & P Portal</h1>
-            </header>
 
-      <div class="container-fluid">
+
+    <!-- ============================================================== -->
+    <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Page wrapper  -->
+    <!-- ============================================================== -->
+    <!-- <div class="page-wrapper"> -->
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
         <div ng-show="main.home">
             <home ng-include="'app/views/layout/home.html'"></home>
         </div>
@@ -267,9 +246,6 @@
     <script src="/app/services/studentServices.js"></script>
     <script src="/app/services/authServices.js"></script>
     <script src="app/services/uploadFileService.js"></script>
-
-    <!-- =====New Filter js -->
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script><script src="/public/assets/js/index.js"></script>
 
     <!-- Bootstrap popper Core JavaScript -->
     <script src="/assets/js/popper/popper.min.js"></script>

@@ -245,13 +245,6 @@ var app = angular.module('userRoutes', ['ngRoute'])
                controllerAs : 'studentsManagement'
            })
 
-           .when('/filter-management', {
-            templateUrl : '/app/views/Filter/filter.html',
-            authenticated : true,
-            controller : 'studentsManagementCtrl',
-            controllerAs : 'studentsManagement'
-        })
-
            .when('/interviews-management', {
                templateUrl : '/app/views/management/interviews-management.html',
                authenticated : true,
