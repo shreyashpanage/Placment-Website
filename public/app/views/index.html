@@ -87,21 +87,26 @@
         <li><a href="/interview-experiences" aria-expanded="false" ng-show="main.isLoggedIn">Interview Experiences</a></li>
         <li ng-show="main.isLoggedIn && main.authorized"> <a href="/file" aria-expanded="false">Upload Student
                 details</a></li>
-        <li><a href="/filter-management" aria-expanded="false" ng-show="main.isLoggedIn && main.authorized">Filter Management</a></li>
+               
 
+                
+            <li ng-show="main.isLoggedIn  && main.authorized" class="nav-item dropdown" >
+              
+              <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="#" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">company function</a>
+              <div class="dropdown-menu justify user-dd animated flipInY">
+                
+                <span class="with-arrow"><h1>company function</h1><span class="bg-primary"></span></span>
+                <div class="d-flex no-block  p-15 bg-primary text-white m-b-10 float-end" align:right>
+                  <div class=""><h4>Company Functions</h4></div>
+                 
+                </div>
+                <a href="/add-new-company" style="color: black;" aria-expanded="false" ng-show="main.isLoggedIn && main.authorized">Add new company</a>
+                  <a href="/editCompany/:company_id" style="color: black;" aria-expanded="false" ng-show="main.isLoggedIn && main.authorized">Edit Company</a>
+                  <a href="/company-registration" style="color: black;" aria-expanded="false" ng-show="main.isLoggedIn && main.authorized">Register Company</a>
 
-            <a href="#">{{ main.student_name }}</a>
-            <ul>
-                <li><a href="#"> {{ main.permission}} </a></li>
-                <li><a href="/profile">My Profile</a></li>
-                <li><a href="/notifications">Notifications</a></li>
-                <li><a href="/timeline" ng-show="!main.authorized">Timeline</a></li>
-                <li><a href="/achievement">Achievement</a></li>
-                <li><a href="/red-flag-history">Red Flag History </a></li>
-                <li><a href="/contributions">Contributions </a></li>
-                <li><a href="/settings">Account Settings </a></li>
-            </ul>
-        </li> -->
+              </div>
+            </li>
         <li ng-show="main.isLoggedIn" class="nav-item dropdown" >
           <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="#" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false"><img src="assets/images/profile/{{ main.gender }}.png" alt="user"
