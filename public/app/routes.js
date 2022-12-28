@@ -36,6 +36,10 @@ var app = angular.module('userRoutes', ['ngRoute'])
                controllerAs : 'email'
            })
 
+          
+
+
+
            .when('/resend', {
                templateUrl : '/app/views/authentication/activation/resend.html',
                authenticated : false,
@@ -66,6 +70,12 @@ var app = angular.module('userRoutes', ['ngRoute'])
                controllerAs : 'addNewCompany',
                permission : ['admin','spc','faculty-coordinator']
            })
+
+           .when('/emailBulk', {
+            templateUrl : '/app/views/management/email-groups/bulk-mail.html',
+            authenticated : true
+            
+        })
 
            .when('/editCompany/:company_id', {
                templateUrl : '/app/views/company/admin/editCompany.html',
@@ -244,13 +254,6 @@ var app = angular.module('userRoutes', ['ngRoute'])
                controller : 'studentsManagementCtrl',
                controllerAs : 'studentsManagement'
            })
-
-           .when('/filter-management', {
-            templateUrl : '/app/views/Filter/filter.html',
-            authenticated : true,
-            controller : 'studentsManagementCtrl',
-            controllerAs : 'studentsManagement'
-        })
 
            .when('/interviews-management', {
                templateUrl : '/app/views/management/interviews-management.html',
