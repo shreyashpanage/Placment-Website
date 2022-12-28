@@ -31,7 +31,7 @@ img {
   color: #6466eb;
   font-size: 48px;
   font-weight: bold;
- background:rgb(245, 186, 229)
+ /* background:rgb(245, 186, 229) */
  ;padding-top:25px ;
  padding-bottom:25px;
   border-radius: 55px;
@@ -404,4 +404,31 @@ nav{
 
 #sub-nav{
   background-color: white;
+}
+
+
+.field {
+  margin-bottom: 10px;
+}
+
+.field label {
+  display: block;
+  font-size: 12px;
+  color: #777;
+}
+
+.field input {
+  display: block;
+  min-width: 250px;
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+input[type="submit"] {
+  display: block;
+  padding: 6px 30px;
+  font-size: 14px;
+  background-color: #4460AA;
+  color: #fff;
+  border: none
 }
