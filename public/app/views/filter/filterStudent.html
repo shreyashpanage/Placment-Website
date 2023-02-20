@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+  <head>
+    <meta charset="utf-8" />
+    <title>Filter Students</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  </head>
+  <body>
+    <form
+      ng-show="main.authorized"
+      ng-submit="filterStudent.getStudent(filterCriteria)"
+    >
+      <div>
+        <label for="student_name">Name</label>
+        <input
+          type="text"
+          id="student_name"
+          name="student_name"
+          ng-model="filterCriteria.name"
+        />
+      </div>
+      <div>
+        <label for="department">Department</label>
+        <select
+          id="department"
+          name="department"
+          ng-model="filterCriteria.department"
+        >
+          <option value="">Select department</option>
+          <option value="Computer Technology">Computer Technology</option>
+          <option value="Mechanical">Mechanical</option>
+          <option value="Civil">Civil</option>
+          <option value="ETC">ETC</option>
+          <option value="Electrical">Electrical</option>
+        </select>
+      </div>
+      <div>
+        <label for="passout_batch">Passout Batch</label>
+        <input
+          type="text"
+          id="passout_batch"
+          name="passout_batch"
+          ng-model="filterCriteria.passoutBatch"
+        />
+      </div>
+      <div>
+        <label for="cgpa">Minimum CGPA</label>
+        <input
+          type="text"
+          id="cgpa"
+          name="cgpa"
+          ng-model="filterCriteria.minCGPA"
+        />
+      </div>
+      <div>
+        <label for="back">Minimum Back</label>
+        <input
+          type="text"
+          id="back"
+          name="back"
+          ng-model="filterCriteria.minBack"
+        />
+      </div>
+      <div>
+        <label for="matric_marks">Minimum Matric Marks</label>
+        <input
+          type="text"
+          id="matric_marks"
+          name="matric_marks"
+          ng-model="filterCriteria.minMatricMarks"
+        />
+      </div>
+      <div>
+        <label for="placement_status">Placement Status</label>
+        <select
+          id="placement_status"
+          name="placement_status"
+          ng-model="filterCriteria.placementStatus"
+        >
+          <option value="">Select placement status</option>
+          <option value="Unplaced">Unplaced</option>
+          <option value="Placed">Placed</option>
+        </select>
+      </div>
+      <button type="submit">Search</button>
+    </form>
+  </body>
+</html>

@@ -1,6 +1,4 @@
-/*
-    Services written by - Pankaj tanwar
-*/
+
 angular.module('studentServices',[])
 
 .factory('student', function ($http) {

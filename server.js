@@ -5,17 +5,16 @@ let morgan = require('morgan');     // middleware to log http requests
 let port = process.env.PORT || 8080; // localhost : PORT=8080 nodemon server.js 
 let bodyParser = require('body-parser');
 const mongodbService = require('./app/services/mongodb.service'); // MongoDB Service
-
 app.use(morgan('dev'));
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
-
 // routes
 app.use('/api/auth/', require('./app/routes/auth.router'));
 app.use('/api/user', require('./app/routes/user.router'));
 app.use('/api/announcement', require('./app/routes/announcement.router'));
+app.use('/api/filter', require('./app/routes/studentFilter.router'));
 app.use('/api/apply', require('./app/routes/apply.router'));
 app.use('/api/attendance', require('./app/routes/attendance.router'));
 app.use('/api/company', require('./app/routes/company.router'));

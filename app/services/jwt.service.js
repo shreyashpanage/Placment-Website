@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 let secret = "abcdef";
 
 exports.encode = (data) => {
+    // console.log(data);
     return jwt.sign({student_name:data.student_name,college_id:data.college_id}, secret)
 };
 
