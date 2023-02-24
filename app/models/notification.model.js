@@ -32,7 +32,7 @@ var notificationSchema = new mongoose.Schema({
     reference : {
         // Like what purpose it was sent. Only for ADMIN
         type : String,
-        required : true
+        // required : true
     },
     timestamp : {
         type : Date,

@@ -184,7 +184,7 @@ angular
 
       // Send Notification
       app.sendNotification = function (notificationData) {
-        notificationData.companyId = $routeParams.company_id;
+        // notificationData.companyId = $routeParams.company_id;
         if ($scope.confirmNotification) {
           app.postingNotificationLoading = true;
           admin.sendCompanyNotification(notificationData).then(function (data) {
