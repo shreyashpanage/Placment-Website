@@ -1,6 +1,3 @@
-/*
-    Controller written by - Pankaj tanwar
-*/
 
 angular.module('mainController', ['authServices','studentServices','adminServices'])
 

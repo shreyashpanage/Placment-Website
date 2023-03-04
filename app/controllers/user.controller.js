@@ -7,7 +7,6 @@ const Mailer = require('../services/mailer.service');
 const Utility = require('../services/utility.service');
 
 exports.sendOTP = async (req, res) => {
-
     const _b = req.body;
     console.log(_b);
     if(!_b.college_id || !_b.password) {

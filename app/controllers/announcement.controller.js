@@ -3,7 +3,6 @@ let User = require('../models/user.model');
 
 exports.add = (req, res) => {
     const _b = req.body;
-
     Announcement.create({
         category : _b.category,
         passout_batch : _b.passout_batch,

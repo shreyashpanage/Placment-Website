@@ -1,6 +1,3 @@
-/*
-    Controller written by - Pankaj Tanwar
-*/
 angular
   .module("adminController", ["adminServices"])
 
@@ -221,6 +218,8 @@ angular
 
   .controller(
     "registeredStudentsCtrl",
+
+    
     function ($routeParams, student, admin, $scope) {
       let app = this;
 
