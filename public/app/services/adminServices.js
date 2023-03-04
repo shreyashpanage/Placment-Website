@@ -7,7 +7,7 @@ angular
     // filter data
     adminFactory.getStudent = function (filterCriteria) {
       console.log(filterCriteria);
-      return $http.get("/api/filter", {
+      return $http.get("/api/filter/get", {
         params: filterCriteria,
       });
     };

@@ -4,85 +4,206 @@
     <meta charset="utf-8" />
     <title>Filter Students</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <style>
+      .form-group {
+        margin-bottom: 10px;
+      }
+
+      label {
+        display: inline-block;
+        width: 120px;
+      }
+
+      input[type="text"],
+      select {
+        height: 28px;
+        padding: 3px 6px;
+        font-size: 14px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+      }
+
+      input[type="number"] {
+        height: 28px;
+        padding: 3px 6px;
+        font-size: 14px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        width: 80px;
+      }
+
+      button[type="submit"] {
+        height: 28px;
+        padding: 3px 10px;
+        font-size: 14px;
+        border-radius: 4px;
+        border: none;
+        background-color: #4caf50;
+        color: #fff;
+        cursor: pointer;
+      }
+      .container {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-bottom: 20px;
+      }
+
+      th,
+      td {
+        /* padding: 2px 5px; */
+        text-align: left;
+        border: 1px solid #ddd;
+      }
+
+      th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+      }
+
+      tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+
+      tr:hover {
+        background-color: #f5f5f5;
+      }
+    </style>
   </head>
   <body>
-    <form
-      ng-show="main.authorized"
-      ng-submit="filterStudent.getStudent(filterCriteria)"
-    >
-      <div>
-        <label for="student_name">Name</label>
-        <input
-          type="text"
-          id="student_name"
-          name="student_name"
-          ng-model="filterCriteria.name"
-        />
+    <div class="container">
+      <div class="form-panel">
+        <div id="filter-panel">
+          <form
+            ng-show="main.authorized"
+            ng-submit="filterStudent.getStudent(filterCriteria)"
+          >
+            <div class="form-group">
+              <label for="student_name">Name:</label>
+              <input
+                type="text"
+                id="student_name"
+                name="student_name"
+                class="form-control"
+                ng-model="filterCriteria.name"
+              />
+            </div>
+            <div class="form-group">
+              <label for="department">Department:</label>
+              <select
+                id="department"
+                name="department"
+                class="form-control"
+                ng-model="filterCriteria.department"
+              >
+                <option value="">Select department</option>
+                <option value="Computer Technology">Computer Technology</option>
+                <option value="Mechanical">Mechanical</option>
+                <option value="Civil">Civil</option>
+                <option value="ETC">ETC</option>
+                <option value="Electrical">Electrical</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="passout_batch">Passout Batch:</label>
+              <input
+                type="text"
+                id="passout_batch"
+                name="passout_batch"
+                class="form-control"
+                ng-model="filterCriteria.passoutBatch"
+                placeholder="{{getCurrentYear()}}"
+              />
+            </div>
+            <div class="form-group">
+              <label for="cgpa">Minimum CGPA:</label>
+              <input
+                type="number"
+                id="cgpa"
+                name="cgpa"
+                class="form-control"
+                ng-model="filterCriteria.minCGPA"
+                min="1"
+                max="10"
+                step="0.1"
+              />
+            </div>
+            <div class="form-group">
+              <label for="back">Minimum Back:</label>
+              <input
+                type="number"
+                id="back"
+                name="back"
+                class="form-control"
+                ng-model="filterCriteria.minBack"
+                min="0"
+                max="10"
+              />
+            </div>
+            <div class="form-group">
+              <label for="matric_marks">Minimum Matric Marks:</label>
+              <input
+                type="number"
+                id="matric_marks"
+                name="matric_marks"
+                class="form-control"
+                ng-model="filterCriteria.minMatricMarks"
+                min="0"
+                max="100"
+                step="0.1"
+              />
+            </div>
+            <div class="form-group">
+              <label for="placement_status">Placement Status:</label>
+              <select
+                id="placement_status"
+                name="placement_status"
+                class="form-control"
+                ng-model="filterCriteria.placementStatus"
+              >
+                <option value="">Select placement status</option>
+                <option value="Unplaced">Unplaced</option>
+                <option value="Placed">Placed</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              ng-click="filterStudent.downloadCSV()"
+              ng-show="students && students.length > 0"
+            >
+              Download CSV
+            </button>
+          </form>
+        </div>
       </div>
-      <div>
-        <label for="department">Department</label>
-        <select
-          id="department"
-          name="department"
-          ng-model="filterCriteria.department"
-        >
-          <option value="">Select department</option>
-          <option value="Computer Technology">Computer Technology</option>
-          <option value="Mechanical">Mechanical</option>
-          <option value="Civil">Civil</option>
-          <option value="ETC">ETC</option>
-          <option value="Electrical">Electrical</option>
-        </select>
+      <div id="results-panel" style="width: 100%; margin: 0 0 0 25%">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Department</th>
+              <th>Passout Batch</th>
+              <th>Placement Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="student in students">
+              <td>{{ student.student_name }}</td>
+              <td>{{ student.department }}</td>
+              <td>{{ student.passout_batch }}</td>
+              <td>{{ student.placement_status }}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-      <div>
-        <label for="passout_batch">Passout Batch</label>
-        <input
-          type="text"
-          id="passout_batch"
-          name="passout_batch"
-          ng-model="filterCriteria.passoutBatch"
-        />
-      </div>
-      <div>
-        <label for="cgpa">Minimum CGPA</label>
-        <input
-          type="text"
-          id="cgpa"
-          name="cgpa"
-          ng-model="filterCriteria.minCGPA"
-        />
-      </div>
-      <div>
-        <label for="back">Minimum Back</label>
-        <input
-          type="text"
-          id="back"
-          name="back"
-          ng-model="filterCriteria.minBack"
-        />
-      </div>
-      <div>
-        <label for="matric_marks">Minimum Matric Marks</label>
-        <input
-          type="text"
-          id="matric_marks"
-          name="matric_marks"
-          ng-model="filterCriteria.minMatricMarks"
-        />
-      </div>
-      <div>
-        <label for="placement_status">Placement Status</label>
-        <select
-          id="placement_status"
-          name="placement_status"
-          ng-model="filterCriteria.placementStatus"
-        >
-          <option value="">Select placement status</option>
-          <option value="Unplaced">Unplaced</option>
-          <option value="Placed">Placed</option>
-        </select>
-      </div>
-      <button type="submit">Search</button>
-    </form>
+    </div>
   </body>
 </html>

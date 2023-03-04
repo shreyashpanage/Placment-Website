@@ -318,8 +318,9 @@ angular
     // Get all announcements
     function getAnnouncementsFunction() {
       student.getAnnouncements().then(function (data) {
-        //console.log(data);
+        // console.log(data);
         if (data.data.success) {
+          // console.log("heidie");
           app.announcements = data.data.announcements;
           app.fetchedAnnouncements = true;
           app.notZeroAnnouncements = data.data.announcements.length > 0;
@@ -351,21 +352,59 @@ angular
       });
     };
   })
-  .controller("filterStudentCtrl", function (student, admin, $scope) {
-
-    // update admin's passout batch
+  .controller("filterStudentCtrl", function (student, admin, $scope, $window) {
     let app = this;
-    // Get all announcements
-    app.getStudent=function (filterCriteria) {
+
+    app.getStudent = function (filterCriteria) {
       console.log(filterCriteria);
-      admin.getStudent(filterCriteria).then(function (data) {
-        console.log("hellroiirieoroe");
-        //console.log(data);
-        if (data.data.success) {
-          console.log("hell yeah");
-        }
+      admin
+        .getStudent(filterCriteria)
+        .then(function (response) {
+          console.log("here is the response", response.data.students);
+          $scope.students = response.data.students;
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    };
+
+    app.downloadCSV = function () {
+      let csvContent = "data:text/csv;charset=utf-8,";
+      let headers = [
+        "Name",
+        "Email",
+        "Department",
+        "Passout Batch",
+        "CGPA",
+        "Back",
+        "Matric Marks",
+        "Placement Status",
+        "Contact Number",
+        "Resume URL",
+      ];
+      csvContent += headers.join(",") + "\r\n";
+      $scope.students.forEach(function (student) {
+        let row = [];
+        row.push(student.student_name);
+        row.push(student.college_email);
+        row.push(student.department);
+        row.push(student.passout_batch);
+        row.push(student.cgpa);
+        row.push(student.Back);
+        row.push(student.matric_marks);
+        row.push(student.placement_status);
+        row.push(student.contact_no);
+        row.push(student.resume_url);
+        csvContent += row.join(",") + "\r\n";
       });
-    }
+      let encodedUri = encodeURI(csvContent);
+      let link = document.createElement("a");
+      link.setAttribute("href", encodedUri);
+      link.setAttribute("download", "filtered_students.csv");
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    };
   })
   // User Profile Controller
   .controller("profileCtrl", function (student, $timeout, $scope, uploadFile) {
@@ -437,7 +476,6 @@ angular
       });
     };
   })
-
   // User timeline controller
   .controller("timelineCtrl", function (student) {
     let app = this;

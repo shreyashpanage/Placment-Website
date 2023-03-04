@@ -69,7 +69,7 @@ var userSchema = new mongoose.Schema({
         type : String,
     },
     cgpa : {
-        type : String,
+        type : Number,
     },
     placement_status : {
         type : String,
@@ -84,13 +84,13 @@ var userSchema = new mongoose.Schema({
         default : 0
     },
     matric_marks : {
-        type : String
+        type : Number
     },
     matric_board : {
         type : String
     },
     senior_marks : {
-        type : String
+        type : Number
     },
     senior_board : {
         type : String
