@@ -138,7 +138,7 @@ angular.module('emailController', ['studentServices'])
    });
 
    this.changePassword = function (logData) {
-       console.log(app.logData);
+    //    console.log(app.logData);
 
        app.errorMsg = false;
        app.successMsg = false;
@@ -154,7 +154,7 @@ angular.module('emailController', ['studentServices'])
                    app.successMsg = data.data.message + ' Redirecting....';
 
                    $timeout(function () {
-                       $location.path('/');
+                       $location.path('/login');
                    }, 2000);
                } else {
                    app.disabled = false;
