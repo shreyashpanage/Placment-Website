@@ -130,8 +130,9 @@ var userSchema = new mongoose.Schema({
         type : Boolean,
         default : true
     },
-    temporarytoken : {
+    token : {
         type : String,
+        default : ''
     },
     permission : {
         type : String,
