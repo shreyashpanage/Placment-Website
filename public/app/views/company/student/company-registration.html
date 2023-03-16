@@ -30,6 +30,36 @@
     </div>
 </div>
 
+<div class="row" ng-show="!companyRegistration.fetchedUpcomingCompanies">
+    <div class="col-md-12">
+        <div class="card-body text-center">
+            <!--<h4 class="card-title">Loading Announcements!</h4>-->
+            <div class="spinner-grow" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-primary" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-success" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-danger" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-warning" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-info" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-dark" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <div ng-show="companyRegistration.fetchedUpcomingCompanies && !main.blockedProfile">
 
     <div class="row">
@@ -73,6 +103,13 @@
     </div>
 </div>
 
+<!-- Link to Previous Company Page -->
+<div class="row mb-2">
+    <div class="col-12">
+        <a href="/previous-companies" class="btn btn-block btn-rounded btn-primary"><i class="icon-eye"></i> &nbsp; View Previous Companies</a>
+    </div>
+</div>
+
 <!-- Company Calender -->
 
 <center><h2>Upcoming Companies Calender</h2></center>
@@ -82,45 +119,10 @@
 </center>
 
 
-<div class="d-grid gap-2">
-    <button class="btn btn-outline-success" type="button" ng-show="main.isLoggedIn && main.authorized" style="text-decoration: none; color: white;"onclick="window.location.href = 'https://docs.google.com/forms/d/e/1FAIpQLScuRbKIoReLxplWYhYgqrFMQnIG2l2eMJxpB-cp5sBNZK4qig/viewform';">Add Event</button>
+<center>
+    <iframe ng-show="main.isLoggedIn && main.authorized" src="https://docs.google.com/forms/d/e/1FAIpQLScuRbKIoReLxplWYhYgqrFMQnIG2l2eMJxpB-cp5sBNZK4qig/viewform?embedded=true" width="700" height="520" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+</center>
 
-</div>
 
-<br>
 
-<div class="row" ng-show="!companyRegistration.fetchedUpcomingCompanies">
-    <div class="col-md-12">
-        <div class="card-body text-center">
-            <!--<h4 class="card-title">Loading Announcements!</h4>-->
-            <div class="spinner-grow" role="status">
-                <span class="sr-only">Loading...</span>
-            </div>
-            <div class="spinner-grow text-primary" role="status">
-                <span class="sr-only">Loading...</span>
-            </div>
-            <div class="spinner-grow text-success" role="status">
-                <span class="sr-only">Loading...</span>
-            </div>
-            <div class="spinner-grow text-danger" role="status">
-                <span class="sr-only">Loading...</span>
-            </div>
-            <div class="spinner-grow text-warning" role="status">
-                <span class="sr-only">Loading...</span>
-            </div>
-            <div class="spinner-grow text-info" role="status">
-                <span class="sr-only">Loading...</span>
-            </div>
-            <div class="spinner-grow text-dark" role="status">
-                <span class="sr-only">Loading...</span>
-            </div>
-        </div>
-    </div>
-</div>
 
-<!-- Link to Previous Company Page -->
-<div class="row mb-2">
-    <div class="col-12">
-        <a href="/previous-companies" class="btn btn-block btn-rounded btn-primary"><i class="icon-eye"></i> &nbsp; View Previous Companies</a>
-    </div>
-</div>
