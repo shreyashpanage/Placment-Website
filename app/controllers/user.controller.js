@@ -100,7 +100,6 @@ exports.forgotPassword = async (req, res) => {
                 res.status(200).json({ success : true, message : 'Link to reset your password has been sent to your registered email.'});
 
                 const sendLink = await Mailer.sendDM(user, 'forgotPassword');
-
             }
         }
         catch (err) {

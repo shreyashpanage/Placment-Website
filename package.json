@@ -1,12 +1,12 @@
 {
-  "name": "placementmnit",
+  "name": "TP&CG_Portal",
   "version": "1.0.0",
-  "description": "Online Web Placement Portal for MNIT",
+  "description": "Online Web Placement Portal for YCCE,Nagpur",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Pankaj Tanwar",
+  "author": "Toshit Kale",
   "license": "ISC",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
