@@ -7,7 +7,6 @@ const Mailer = require('../services/mailer.service');
 const Utility = require('../services/utility.service');
 
 exports.sendOTP = async (req, res) => {
-
     const _b = req.body;
     console.log(_b);
     if(!_b.college_id || !_b.password) {
@@ -52,24 +51,28 @@ exports.login = async (req, res) => {
         res.status(200).json({ success : false, message : 'Ensure you filled all the entries.'})
     } else {
         try {
-            console.log("hello");
+            // console.log("hello");
             const user = await User.findOne({ college_id : req.body.college_id.toUpperCase() }).select('college_id student_name password login_otp')
-            console.log(user);
+            // console.log(user);
             // let validPassword = user.comparePassword(_b.password);
-            let validPassword = true;
+            // let validPassword = true;
             let token = jwtService.encode(user);
-            res.status(200).json({ success: true, message: 'User authenticated.', token: token});
-            // if (validPassword) {
-            //     // OTP Matched
-            //     if(_b.login_otp === user.login_otp) {
-            //         let token = jwtService.encode(user);
-            //         res.status(200).json({ success: true, message: 'User authenticated.', token: token});
-            //     } else {
-            //         res.status(200).json({ success : false, message : 'Incorrect OTP' })
-            //     }
-            // } else {
-            //     res.status(200).json({ success: false, message: 'Incorrect password. Please try again.'});
-            // }
+            if(_b.password === user.password) {
+                res.status(200).json({ success: true, message: 'User authenticated.', token: token});
+                // if (validPassword) {
+                //     // OTP Matched
+                //     if(_b.login_otp === user.login_otp) {
+                //         let token = jwtService.encode(user);
+                //         res.status(200).json({ success: true, message: 'User authenticated.', token: token});
+                //     } else {
+                //         res.status(200).json({ success : false, message : 'Incorrect OTP' })
+                //     }
+                // } else {
+                //     res.status(200).json({ success: false, message: 'Incorrect password. Please try again.'});
+                // }
+            }else {
+                res.status(200).json({ success : false, message : 'Incorrect Password!'})
+            }
         }
         catch (err) {
             console.error(err);
@@ -85,19 +88,18 @@ exports.forgotPassword = async (req, res) => {
         res.status(200).json({ success : false, message : 'Missing college ID'});
     else
         try {
-            const user = await User.findOne({ college_id : req.body.college_id.toUpperCase() }).select('college_id college_email temporarytoken student_name')
+            const user = await User.findOne({ college_id : req.body.college_id.toUpperCase() }).select('college_id college_email token student_name')
 
             if(!user) {
                 res.status(200).json({ success : false, message : 'College ID not found.'})
             } else {
-                user.temporarytoken = jwtService.encode(user);
+                user.token = jwtService.encode(user);
 
-                let updateToken = await User.updateOne({ college_id : req.body.college_id.toUpperCase() }, { temporarytoken : user.temporarytoken })
+                let updateToken = await User.updateOne({ college_id : req.body.college_id.toUpperCase() }, { token : user.token })
 
                 res.status(200).json({ success : true, message : 'Link to reset your password has been sent to your registered email.'});
 
                 const sendLink = await Mailer.sendDM(user, 'forgotPassword');
-
             }
         }
         catch (err) {
@@ -114,7 +116,7 @@ exports.verifyToken = async (req, res) => {
         res.status(200).json({ success : false, message : 'No token provided.'})
     } else {
         try {
-            const user = await User.findOne({ temporarytoken : _b.token }).select('college_id temporarytoken');
+            const user = await User.findOne({ token : _b.token }).select('college_id token');
 
             if(!user) {
                 res.json({ success : false, message : 'Link has been expired.'})
@@ -138,15 +140,17 @@ exports.resetPassword = async (req, res) => {
     } else {
         try {
             // todo saving even temp token in db is not a good practice, take it, decode it every time!!
-            const user = await User.findOne({ temporarytoken : _b.token }).select('student_name college_email password temporarytoken');
+           const user = await User.findOne({ token : _b.token }).select('_id college_id student_name college_email password token');
 
             if(!user) {
                 res.status(200).json({ success : false, message : 'Token has been expired.'});
             } else {
                 user.password = _b.password;
-                user.temporarytoken = '';
-
-                const data = await user.save();
+                user.token = '';
+                const c_id = user.college_id;
+                // const data = await user.save();
+                let updateToken = await User.updateOne({ college_id : c_id }, { token : user.token })
+                let updatePassword = await User.updateOne({ college_id : c_id }, { password : user.password })
 
                 res.status(200).json({ success : true, message : 'Hi ' + user.student_name + ', your Password has been changed successfully.'})
 
@@ -249,7 +253,7 @@ exports.profile = (req, res) => {
 
     User
         .findOne({ college_id : req.decoded.college_id })
-        .select('-temporarytoken -password -active -status -permission -program -login_otp')
+        .select('-token -password -active -status -permission -program -login_otp')
         .lean()
         .then(profile => {
             res.status(200).json({ success : true, profile : profile })

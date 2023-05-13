@@ -4,8 +4,8 @@ const templateService = require('../services/template.service');
 let transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: process.env.PTP_EMAIL,
-        pass: process.env.PTP_EMAIL_PASSWORD
+        user: "kkmkittu36@gmail.com",
+        pass: "bwypowrjvaszxqdv"
     }
 });
 
