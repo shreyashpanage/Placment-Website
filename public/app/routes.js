@@ -185,9 +185,9 @@ var app = angular
         permission: ["admin"],
       })
 
-      .when("/technical", {
-        templateUrl: "/app/views/developer/technical.html",
-        controller: "technicalCtrl",
+     .when("/about", {
+       templateUrl: "/app/views/developer/about.html",
+       controller: "technicalCtrl",
         controllerAs: "technical",
       })
 

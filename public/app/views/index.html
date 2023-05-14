@@ -78,21 +78,20 @@
             <a href='/' id="logo"> <img src="assets/images/favicon/logo.jpg" alt="homepage" class="light-logo"
                     style="width: 50px;height: 50px;" /></a>
         </li>
-        <!--                         
-                        <li ng-show="main.isLoggedIn"> <a class="nav-toggler waves-effect waves-dark" href="/company-registration" aria-expanded="false"><i class="icon-briefcase"></i><span class="hide-menu">Company Registration</span></a></li> -->
+      <li><a href="/" aria-expanded="false">Home</a></li>
         <li ng-show="main.isLoggedIn"><a href="/company-registration" aria-expanded="false">Updates</a></li>
         
 
         <!-- <li><a href="/team" aria-expanded="false">Team</a></li> -->
         <li><a href="http://tnp.herokuapp.com/" target="_blank" aria-expanded="false">Placement Prediction</a></li>
-        <li><a href="/technical" aria-expanded="falCompany Registrationse">Developer</a></li>
-        <li><a href="/contact" aria-expanded="false">Contact</a></li>
+         <li><a href="/about" aria-expanded="falCompany Registrationse">About Us</a></li><li><a href="/contact" aria-expanded="false">Contact</a></li>
         <li><a href="/placements" aria-expanded="false">Hall of Fame</a></li>
         <li><a href="/notifications" aria-expanded="false" ng-show="main.isLoggedIn  && !main.authorized">All Notifications</a></li>
         <li><a href="/interview-experiences" aria-expanded="false" ng-show="main.isLoggedIn ">Interview Experiences</a></li>
         <!-- <li ng-show="main.isLoggedIn && main.authorized"> <a href="/file" aria-expanded="false">Upload Student
                 details</a></li> -->
-        <li><a href="/company-notification/:company_id" aria-expanded="false" ng-show="main.isLoggedIn && main.authorized">Notification Management</a></li>
+         <li><a href="https://tnp.herokuapp.com/" aria-expanded="false" ng-show="main.isLoggedIn ">Placement Prediction</a></li>
+                <li><a href="/company-notification/:company_id" aria-expanded="false" ng-show="main.isLoggedIn && main.authorized">Notification Management</a></li>
                
                 
 
@@ -119,13 +118,13 @@
             </li>
         <li ng-show="main.isLoggedIn" class="nav-item dropdown" >
           <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="#" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false"><img src="assets/images/profile/{{ main.gender }}.png" alt="user"
-              class="img-circle" width="30"></a>
-          <div class="dropdown-menu justify user-dd animated flipInY">
+           aria-haspopup="true" aria-expanded="false"><img src="assets/images/profile/M.png" alt="user"
+              class="img-circle" style="height: 40px; width: 40px;"></a>
+                        <div class="dropdown-menu justify user-dd animated flipInY">
             <span class="with-arrow"><span class="bg-primary"></span></span>
             <div class="d-flex no-block  p-15 bg-primary text-white m-b-10 float-end" align:right>
-              <div class=""><img src="assets/images/profile/{{ main.gender}}.png" alt="user" class="img-circle"
-                  width="60"></div>
+             <div class=""><img src="assets/images/profile/M.png" alt="user" class="img-circle"
+                  width="30" height="30"></div>
               <div class="m-l-10">
                 <h4 class="m-b-0">{{ main.student_name }}</h4>
                 <p class=" m-b-0"> {{ main.permission.toUpperCase() }} </p>
@@ -154,8 +153,8 @@
 
 
     <header class="section-header text-center ">
-      <h1 class="animate__animated animate__fadeInDown heading " >YCCE T & P Portal</h1>
-            </header>
+        <h1 class="animate__animated animate__fadeInDown heading " >TP & CG Portal</h1>
+        </header>
 
       <div class="container-fluid">
         <div ng-show="main.home">
