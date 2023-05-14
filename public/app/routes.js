@@ -19,6 +19,14 @@ var app = angular
         controller: "filterStudentCtrl",
         controllerAs: "filterStudent",
       })
+      // bulkmail
+      .when("/emailBulk", {
+        templateUrl: "/app/views/management/email-groups/bulk-mail.html",
+        authenticated: true,
+        permission: ["admin", "spc", "faculty-coordinator"],
+        controller: "bulkMailCtrl",
+        controllerAs: "bulkMail",
+      })
       // Authentication Routes
       .when("/login", {
         templateUrl: "/app/views/authentication/login.html",
@@ -75,10 +83,7 @@ var app = angular
         permission: ["admin", "spc", "faculty-coordinator"],
       })
 
-      .when("/emailBulk", {
-        templateUrl: "/app/views/management/email-groups/bulk-mail.html",
-        authenticated: true,
-      })
+
 
       .when("/editCompany/:company_id", {
         templateUrl: "/app/views/company/admin/editCompany.html",

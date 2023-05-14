@@ -356,7 +356,7 @@ angular
     let app = this;
 
     app.getStudent = function (filterCriteria) {
-      console.log(filterCriteria);
+      console.log(filterCriteria, "I am hereeeeee");
       admin
         .getStudent(filterCriteria)
         .then(function (response) {
@@ -406,6 +406,53 @@ angular
       document.body.removeChild(link);
     };
   })
+  //bulk mail controller
+  .controller("bulkMailCtrl", function ($scope, admin, $http, $window) {
+    let app = this;
+    app.extractedEmails = [];
+
+    app.sendBulkEmail = function (mailcriteria) {
+      let file = mailcriteria.excelFile;
+      let reader = new FileReader();
+
+      reader.onload = function (e) {
+        let data = new Uint8Array(e.target.result);
+        let workbook = XLSX.read(data, { type: "array" });
+        let worksheet = workbook.Sheets[workbook.SheetNames[0]];
+        let jsonData = XLSX.utils.sheet_to_json(worksheet, {
+          raw: true,
+        });
+        if (jsonData.length > 0 && jsonData[0].Email !== undefined) {
+          let emailAddresses = jsonData.map(function (item) {
+            return item.Email;
+          });
+
+          app.extractedEmails = emailAddresses;
+
+          let emailData = {
+            recipients: emailAddresses,
+            subject: mailcriteria.subject,
+            content: mailcriteria.content,
+          };
+
+          admin.sendMail(emailData);
+          $scope.$apply(function () {
+            $scope.isEmailColumnRequired = false; // Hide the validation message
+          });
+          // Rest of the code
+        } else {
+          // Invalid file, display validation message
+          console.log("reaching ehereererere");
+          $scope.$apply(function () {
+            $scope.isEmailColumnRequired = true; // Show the validation message
+          });
+        }
+      };
+
+      reader.readAsArrayBuffer(file);
+    };
+  })
+
   // User Profile Controller
   .controller("profileCtrl", function (student, $timeout, $scope, uploadFile) {
     let app = this;
@@ -479,14 +526,11 @@ angular
   // User timeline controller
   .controller("timelineCtrl", function (student) {
     let app = this;
-
     app.timelineLengthZero = false;
-
     // get student timeline controller function
     student.getTimeline().then(function (data) {
       // Loading timeline message
       app.getTimelineLoadingMsg = true;
-
       if (data.data.success) {
         app.getTimelineLoadingMsg = false;
         app.timeline = data.data.timeline;

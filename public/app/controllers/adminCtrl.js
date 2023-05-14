@@ -1,3 +1,4 @@
+
 angular
   .module("adminController", ["adminServices"])
 
@@ -15,19 +16,13 @@ angular
         "Electrical Engineering",
         "Mechanical Engineering",
         "Computer Technology",
-        
       ],
-      mtech: [
-        "Electronics & Communication",
-        
-      ],
-     
+      mtech: ["Electronics & Communication"],
     };
 
     $scope.programsDiv = {
       ug: false,
       mtech: false,
-      
     };
 
     $scope.showBranchesDiv = function (program) {
@@ -60,13 +55,8 @@ angular
           "Electrical Engineering",
           "Mechanical Engineering",
           "Computer Technology",
-          
         ],
-        mtech: [
-          "Electronics & Communication",
-          
-        ],
-       
+        mtech: ["Electronics & Communication"],
       };
 
       // Get Company Details
@@ -219,7 +209,6 @@ angular
   .controller(
     "registeredStudentsCtrl",
 
-    
     function ($routeParams, student, admin, $scope) {
       let app = this;
 

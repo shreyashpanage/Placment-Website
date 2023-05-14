@@ -1,122 +1,164 @@
 <!DOCTYPE html>
 <html ng-app="myApp">
   <head>
-    <meta charset="utf-8" />
-    <title>Filter Students</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
     <style>
-      .form-group {
-        margin-bottom: 10px;
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f5f5f5;
+        border-radius: 5px;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      .form-row {
+        margin-bottom: 15px;
       }
 
       label {
-        display: inline-block;
-        width: 120px;
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+        color: #333;
       }
 
       input[type="text"],
+      input[type="number"],
       select {
-        height: 28px;
-        padding: 3px 6px;
+        width: 100%;
+        height: 30px;
+        padding: 6px 12px;
         font-size: 14px;
         border-radius: 4px;
         border: 1px solid #ccc;
         box-sizing: border-box;
       }
 
-      input[type="number"] {
-        height: 28px;
-        padding: 3px 6px;
-        font-size: 14px;
-        border-radius: 4px;
-        border: 1px solid #ccc;
-        box-sizing: border-box;
-        width: 80px;
+      select {
+        appearance: none;
+        background-color: #fff;
+        background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%23000' d='M5 6L0 .6h10L5 6z'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 8px center;
+        background-size: 8px 6px;
+        padding-right: 24px;
       }
 
-      button[type="submit"] {
-        height: 28px;
-        padding: 3px 10px;
+      button {
+        padding: 8px 16px;
         font-size: 14px;
         border-radius: 4px;
         border: none;
-        background-color: #4caf50;
-        color: #fff;
         cursor: pointer;
+        color: #fff;
+        margin-right: 10px;
       }
-      .container {
-        display: flex;
-        flex-direction: row;
+
+      .btn-search {
+        background-color: #4caf50;
+      }
+
+      .btn-download {
+        background-color: #2196f3;
+      }
+
+      .table {
         width: 100%;
-      }
-      table {
         border-collapse: collapse;
-        width: 100%;
-        margin-bottom: 20px;
+        margin-top: 20px;
       }
 
-      th,
-      td {
-        /* padding: 2px 5px; */
+      .table th,
+      .table td {
+        padding: 10px;
         text-align: left;
-        border: 1px solid #ddd;
+        border-bottom: 1px solid #ccc;
       }
 
-      th {
+      .table th {
         background-color: #f2f2f2;
         font-weight: bold;
+        color: #333;
       }
 
-      tr:nth-child(even) {
+      .table tbody tr:nth-child(even) {
         background-color: #f9f9f9;
       }
 
-      tr:hover {
+      .table tbody tr:hover {
         background-color: #f5f5f5;
       }
+
+      @media (max-width: 600px) {
+        input[type="text"],
+        input[type="number"],
+        select {
+          width: 100%;
+        }
+      }
+      .form-group {
+        display: inline-block;
+        width: 48%;
+        margin-right: 2%;
+        margin-bottom: 15px;
+      }
+
+      .form-group:last-child {
+        margin-right: 0;
+      }
+      .file-info {
+        color: red;
+        margin-top: 5px;
+      }
     </style>
+    <meta charset="utf-8" />
+    <title>Filter Students</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
   </head>
   <body>
     <div class="container">
-      <div class="form-panel">
-        <div id="filter-panel">
-          <form
-            ng-show="main.authorized"
-            ng-submit="filterStudent.getStudent(filterCriteria)"
-          >
-            <div class="form-group">
-              <label for="student_name">Name:</label>
-              <input
-                type="text"
-                id="student_name"
-                name="student_name"
-                class="form-control"
-                ng-model="filterCriteria.name"
-              />
-            </div>
-            <div class="form-group">
-              <label for="department">Department:</label>
-              <select
-                id="department"
-                name="department"
-                class="form-control"
-                ng-model="filterCriteria.department"
-              >
-                <option value="">Select department</option>
-                <option value="Computer Technology">Computer Technology</option>
-                <option value="Mechanical">Mechanical</option>
-                <option value="Civil">Civil</option>
-                <option value="ETC">ETC</option>
-                <option value="Electrical">Electrical</option>
-              </select>
-            </div>
+      <h1>Filter Students</h1>
+      <div id="filter-panel">
+        <form
+          ng-show="main.authorized"
+          ng-submit="filterStudent.getStudent(filterCriteria)"
+        >
+          <div class="form-row">
+            <label for="student_name">Name:</label>
+            <input
+              type="text"
+              id="student_name"
+              name="student_name"
+              ng-model="filterCriteria.name"
+            />
+          </div>
+          <div class="form-row">
+            <label for="department">Department:</label>
+            <select
+              id="department"
+              name="department"
+              ng-model="filterCriteria.department"
+            >
+              <option value="">Select department</option>
+              <option value="Computer Technology">Computer Technology</option>
+              <option value="Mechanical">Mechanical</option>
+              <option value="Civil">Civil</option>
+              <option value="ETC">ETC</option>
+              <option value="Electrical">Electrical</option>
+            </select>
+          </div>
+          <div class="form-row">
             <div class="form-group">
               <label for="passout_batch">Passout Batch:</label>
               <input
                 type="text"
                 id="passout_batch"
                 name="passout_batch"
-                class="form-control"
                 ng-model="filterCriteria.passoutBatch"
                 placeholder="{{getCurrentYear()}}"
               />
@@ -127,22 +169,22 @@
                 type="number"
                 id="cgpa"
                 name="cgpa"
-                class="form-control"
                 ng-model="filterCriteria.minCGPA"
                 min="1"
                 max="10"
                 step="0.1"
               />
             </div>
+          </div>
+          <div class="form-row">
             <div class="form-group">
               <label for="back">Minimum Back:</label>
               <input
                 type="number"
                 id="back"
                 name="back"
-                class="form-control"
                 ng-model="filterCriteria.minBack"
-                min="0"
+                min="1"
                 max="10"
               />
             </div>
@@ -152,40 +194,52 @@
                 type="number"
                 id="matric_marks"
                 name="matric_marks"
-                class="form-control"
                 ng-model="filterCriteria.minMatricMarks"
-                min="0"
+                min="1"
                 max="100"
-                step="0.1"
               />
             </div>
-            <div class="form-group">
-              <label for="placement_status">Placement Status:</label>
-              <select
-                id="placement_status"
-                name="placement_status"
-                class="form-control"
-                ng-model="filterCriteria.placementStatus"
-              >
-                <option value="">Select placement status</option>
-                <option value="Unplaced">Unplaced</option>
-                <option value="Placed">Placed</option>
-              </select>
-            </div>
-            <button type="submit" class="btn btn-primary">Search</button>
+          </div>
+
+          <div class="form-row">
+            <label for="placement_status">Placement Status:</label>
+            <select
+              id="placement_status"
+              name="placement_status"
+              ng-model="filterCriteria.placementStatus"
+            >
+              <option value="">Select placement status</option>
+              <option value="Unplaced">Unplaced</option>
+              <option value="Placed">Placed</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="company">Company:</label>
+            <input
+              type="text"
+              id="company"
+              name="company"
+              class="form-control"
+              ng-model="filterCriteria.company"
+              placeholder="Enter company name"
+            />
+          </div>
+
+          <div class="form-row">
+            <button type="submit" class="btn btn-search">Search</button>
             <button
               type="button"
-              class="btn btn-secondary"
+              class="btn btn-download"
               ng-click="filterStudent.downloadCSV()"
               ng-show="students && students.length > 0"
             >
               Download CSV
             </button>
-          </form>
-        </div>
+          </div>
+        </form>
       </div>
-      <div id="results-panel" style="width: 100%; margin: 0 0 0 25%">
-        <table>
+      <div id="results-panel">
+        <table class="table">
           <thead>
             <tr>
               <th>Name</th>

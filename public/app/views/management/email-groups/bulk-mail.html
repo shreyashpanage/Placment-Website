@@ -1,98 +1,136 @@
-<div class="card" >
-   <!-- Resume Upload Button -->
-   <div class="card-body">
-       <div class="d-flex no-block align-items-center">
-           <div class="ml-auto">
-               <!-- <button class="float-right btn btn-circle btn-primary">
-                   <a href="https://dashboard.emailjs.com/admin/templates/rlp6n68" target="blank"></a>
-               </button> -->
+<!DOCTYPE html>
+<html ng-app="myApp">
+  <head>
+    <meta charset="utf-8" />
+    <title>Bulk Mail</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+    <script src="../../../../../../T-P/public/bundled.js"></script>
+    <script src="../../../../../node_modules/xlsx/dist/xlsx.core.min.js"></script>
+    <style>
+      body {
+        background-color: #f5f5f5;
+        font-family: Arial, sans-serif;
+      }
 
-               <button class=" btn  btn-primary" onclick="window.location.href = 'https://dashboard.emailjs.com/admin/templates';" target:"blank"> send </button>
-           </div>
-       </div>
-   </div>
-   <ul class="product-review text-center">
-       
-       <li>
-           
-           <span>
-               <h3 class="card-title">To send Bulk mail  </h3>
-               <h5 class="card-title">click on the new button above.You would be redirected to EmailJS site. The login crediantials of that wedsite are as follows : </h5>
-               <h5 class="card-title">Username :radhikabhoyarbusiness@gmail.com </h5>
-               <h5 class="card-title">Password :newPass23 </h5>
-               <h5 class="card-title">After logging in you have to click on the test it button then put your msg in the spaces provided in there and then sen the mail. It would be sent to every <h5 class="card-title">Student User</h5>. </h5>
+      .container {
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
 
-            </span>
-       </li>
+      h1 {
+        text-align: center;
+        color: #333;
+      }
 
+      form {
+        margin-bottom: 20px;
+      }
 
-      
-      
-   </ul>
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
 
-  
-</div>
+      input[type="file"],
+      input[type="text"],
+      textarea {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 14px;
+      }
 
+      button[type="submit"] {
+        background-color: #4caf50;
+        color: #fff;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+      }
 
-<div class="card" >
-  <!-- Resume Upload Button -->
-  <div class="card-body">
-      <div class="d-flex no-block align-items-center">
-          <div class="ml-auto">
-              <!-- <button class="float-right btn btn-circle btn-primary">
-                  <a href="https://dashboard.emailjs.com/admin/templates/rlp6n68" target="blank"></a>
-              </button> -->
+      ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
 
-              <button class=" btn  btn-primary" onclick="window.location.href = 'https://dashboard.emailjs.com/admin/templates';" target:"blank"> send </button>
-          </div>
+      .file-info {
+        color: #999;
+        font-size: 14px;
+        margin-bottom: 10px;
+      }
+
+      .file-validation {
+        color: #f00;
+        font-size: 14px;
+        margin-top: 5px;
+      }
+      /* Optional: Add any additional styles as needed */
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Bulk Mail</h1>
+      <form
+        ng-submit="bulkMail.sendBulkEmail(mailcriteria)"
+        enctype="multipart/form-data"
+      >
+        <div>
+          <label for="excelFile">Upload Excel File:</label>
+          <input
+            type="file"
+            id="excelFile"
+            name="excelFile"
+            file-model="mailcriteria.excelFile"
+            accept=".xlsx, .xls"
+            required
+          />
+          <p class="file-info">
+            Excel file must have the first column as "Email".
+          </p>
+        </div>
+        <div>
+          <label for="subject">Subject:</label>
+          <input
+            type="text"
+            id="subject"
+            name="subject"
+            ng-model="mailcriteria.subject"
+          />
+        </div>
+        <div>
+          <label for="content">Content:</label>
+          <textarea
+            id="content"
+            name="content"
+            ng-model="mailcriteria.content"
+          ></textarea>
+        </div>
+
+        <div>
+          <button type="submit">Send Bulk Email</button>
+        </div>
+        <p class="file-validation" ng-show="isEmailColumnRequired">
+          Excel file must have the first column as "Email".
+        </p>
+      </form>
+
+      <div ng-show="bulkMail.extractedEmails.length > 0">
+        <h2>Extracted Emails:</h2>
+        <ul>
+          <li ng-repeat="email in bulkMail.extractedEmails">{{ email }}</li>
+        </ul>
       </div>
-  </div>
-  <ul class="product-review text-center">
-
-<li>
-           
-  <span>
-      <h3 class="card-title">To send Personal Mail   </h3>
-      <h5 class="card-title">click on the new button above.That would redirect you . The login crediantials of that wedsite are as follows : </h5>
-      <h5 class="card-title">Username :radhikabhoyarbusiness@gmail.com </h5>
-      <h5 class="card-title">Password :newPass23 </h5>
-      <h5 class="card-title">After logging in you can write the message you want to type in for the student. <h5 class="card-title">Student User</h5>. </h5>
-
-   </span>
-</li>
-
-</ul>
-
- 
-</div>
-
-<!-- <script type="text/javascript"
-  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-
-<script type="text/javascript">
-  emailjs.init('Elp84WyCQuA2OIMpk')
-</script>
-
-
-<script>
-   const btn = document.getElementById('button');
-
-document.getElementById('form')
- .addEventListener('submit', function(event) {
-   event.preventDefault();
-
-   btn.value = 'Sending...';
-
-   const serviceID = 'default_service';
-   const templateID = 'template_qdkc3ei';
-
-   emailjs.sendForm(serviceID, templateID, this)
-    .then(() => {
-      btn.value = 'Send Email';
-      alert('Sent!');
-    }, (err) => {
-      btn.value = 'Send Email';
-      alert(JSON.stringify(err));
-    });
-});
-</script> -->
+    </div>
+  </body>
+</html>

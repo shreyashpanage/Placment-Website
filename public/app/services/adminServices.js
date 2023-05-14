@@ -4,12 +4,15 @@ angular
   .factory("admin", function ($http) {
     let adminFactory = {};
     // Filter Data
-    // filter data
     adminFactory.getStudent = function (filterCriteria) {
       console.log(filterCriteria);
       return $http.get("/api/filter/get", {
         params: filterCriteria,
       });
+    };
+    adminFactory.sendMail = function (emailData) {
+      console.log(emailData);
+      return $http.post("api/send-bulk-email/send", emailData);
     };
 
     // post announcement
