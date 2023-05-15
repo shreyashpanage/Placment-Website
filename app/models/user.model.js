@@ -91,13 +91,13 @@ var userSchema = new mongoose.Schema({
     type: mongoose.Types.Decimal128,
   },
   matric_board: {
-    type: Number,
+    type: String,
   },
   senior_marks: {
     type: mongoose.Types.Decimal128,
   },
   senior_board: {
-    type: Number,
+    type: String,
   },
   alternate_contact_no: {
     type: Number,
