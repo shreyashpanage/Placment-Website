@@ -26,7 +26,7 @@ exports.getEmailOpts = (data, mailType) => {
     case "forgotPassword":
       return {
         from: from,
-        to: data.college_email,
+        to: data.college_id + "@ycce.in",
         subject: "Reset Password Request : Placement Cell, YCCE Nagpur",
         text:
           "Hello " +
@@ -47,7 +47,7 @@ exports.getEmailOpts = (data, mailType) => {
     case "passwordUpdated":
       return {
         from: from,
-        to: data.college_email,
+        to: data.college_id + "@ycce.in",
         subject: "Password Updated : T&P Cell, YCCE Nagpur",
         text:
           "Hello " +

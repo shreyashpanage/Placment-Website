@@ -5,8 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build" :"npm i" 
-
+    "build": "npm i"
   },
   "author": "Toshit Kale",
   "license": "ISC",
@@ -38,5 +37,4 @@
     "validator": "^13.7.0",
     "xlsx": "^0.18.5"
   }
-
 }

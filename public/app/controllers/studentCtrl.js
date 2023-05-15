@@ -389,9 +389,9 @@ angular
         row.push(student.college_email);
         row.push(student.department);
         row.push(student.passout_batch);
-        row.push(student.cgpa);
+        row.push(student.cgpa); // Convert cgpa to string
         row.push(student.Back);
-        row.push(student.matric_marks);
+        row.push(student.matric_marks); // Convert matric_marks to string
         row.push(student.placement_status);
         row.push(student.contact_no);
         row.push(student.resume_url);

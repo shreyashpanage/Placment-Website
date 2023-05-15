@@ -55,7 +55,7 @@ var userSchema = new mongoose.Schema({
     type: String,
   },
   contact_no: {
-    type: Number,
+    type: String,
   },
   college_email: {
     type: String,
@@ -64,6 +64,9 @@ var userSchema = new mongoose.Schema({
     type: String,
   },
   degree: {
+    type: String,
+  },
+  dob: {
     type: String,
   },
   department: {
@@ -85,13 +88,13 @@ var userSchema = new mongoose.Schema({
     default: 0,
   },
   matric_marks: {
-    type: Number,
+    type: mongoose.Types.Decimal128,
   },
   matric_board: {
     type: Number,
   },
   senior_marks: {
-    type: Number,
+    type: mongoose.Types.Decimal128,
   },
   senior_board: {
     type: Number,
