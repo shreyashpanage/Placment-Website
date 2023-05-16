@@ -1,5 +1,5 @@
 {
-  "name": "TP&CG_Portal",
+  "name": "TPCG_Portal",
   "version": "1.0.0",
   "description": "Online Web Placement Portal for YCCE,Nagpur",
   "main": "server.js",
