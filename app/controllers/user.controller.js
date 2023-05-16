@@ -5,6 +5,7 @@ const Placements = require('../models/placements.model');
 const jwtService = require('../services/jwt.service');
 const Mailer = require('../services/mailer.service');
 const Utility = require('../services/utility.service');
+const bcryptjs = require('bcryptjs');
 
 exports.sendOTP = async (req, res) => {
     const _b = req.body;
@@ -52,12 +53,13 @@ exports.login = async (req, res) => {
     } else {
         try {
             // console.log("hello");
-            const user = await User.findOne({ college_id : req.body.college_id.toUpperCase() }).select('college_id student_name password login_otp')
-            // console.log(user);
+            const user = await User.findOne({ college_id : _b.college_id }).select('college_id student_name password login_otp')
             // let validPassword = user.comparePassword(_b.password);
+            const validPassword = await bcryptjs.compare(_b.password, user.password);
             // let validPassword = true;
+            console.log("valid password : " + validPassword);
             let token = jwtService.encode(user);
-            if(_b.password === user.password) {
+            if(validPassword) {
                 res.status(200).json({ success: true, message: 'User authenticated.', token: token});
                 // if (validPassword) {
                 //     // OTP Matched
@@ -83,13 +85,14 @@ exports.login = async (req, res) => {
 
 exports.forgotPassword = async (req, res) => {
     const _b = req.body;
-
-    if(!_b.college_id)
+    // console.log("Input when forgot password ::: " + req.body);
+    if(!_b.college_id) {
         res.status(200).json({ success : false, message : 'Missing college ID'});
-    else
+    }
+    else {
         try {
             const user = await User.findOne({ college_id : req.body.college_id.toUpperCase() }).select('college_id college_email token student_name')
-
+            console.log("User when Forgot Password ::: " + user);
             if(!user) {
                 res.status(200).json({ success : false, message : 'College ID not found.'})
             } else {
@@ -101,11 +104,13 @@ exports.forgotPassword = async (req, res) => {
 
                 const sendLink = await Mailer.sendDM(user, 'forgotPassword');
             }
+            console.log("User After ::: " + user);
         }
         catch (err) {
             console.error(err);
             res.status(200).json({ success : false, message : 'Something went wrong!' })
         }
+    }
 }
 
 exports.verifyToken = async (req, res) => {
@@ -148,9 +153,9 @@ exports.resetPassword = async (req, res) => {
                 user.password = _b.password;
                 user.token = '';
                 const c_id = user.college_id;
-                // const data = await user.save();
-                let updateToken = await User.updateOne({ college_id : c_id }, { token : user.token })
-                let updatePassword = await User.updateOne({ college_id : c_id }, { password : user.password })
+                const data = await user.save();
+                // let updateToken = await User.updateOne({ college_id : c_id }, { token : user.token })
+                // let updatePassword = await User.updateOne({ college_id : c_id }, { password : user.password })
 
                 res.status(200).json({ success : true, message : 'Hi ' + user.student_name + ', your Password has been changed successfully.'})
 
@@ -267,11 +272,11 @@ exports.profile = (req, res) => {
 exports.updateProfile = (req, res) => {
 
     const _b = req.body;
-    const userDataFields = ["matric_marks","matric_board","senior_marks","senior_board","alternate_contact_no","address","city","post_code","state","country","linkedln_link"];
+    const userDataFields = ["matric_marks","matric_board","senior_marks","senior_board","alternate_contact_no","address","city","post_code","state","country","placement_status","company1","company2","company3","company4","linkedln_link","resume_url"];
 
     User
         .findOne({ college_id : req.decoded.college_id })
-        .select('matric_marks matric_board senior_marks senior_board alternate_contact_no address city state post_code country linkedln_link')
+        .select('matric_marks matric_board senior_marks senior_board alternate_contact_no address city state post_code country placement_status company1 company2 company3 company4 linkedln_link resume_url')
         .then(user=> {
             userDataFields.forEach(field => {
                 if(_b[field]) user[field] = _b[field];
@@ -291,25 +296,27 @@ exports.changePassword = async (req, res) => {
 
     const _b = req.body;
 
-    if(!_b.old_password || !_b.new_password) {
+    if(!_b.old_password || !_b.new_password || !_b.confirm_password) {
         res.status(200).json({ success : false, message : 'Old or new password is missing.'})
-    } else {
+    }else if(_b.new_password !== _b.confirm_password) {
+        res.status(200).json({ success: false, message: 'Password and Confirm Password Not Match.'})
+    }else if(_b.new_password === _b.old_password) {
+        res.status(200).json({success: false, message: 'Old Password and New password cannot be same.'})
+    }else {
         try {
-            const user = await User.findOne({ college_id : req.decoded.college_id }).select('password');
+            const user = await User.findOne({ college_id : req.decoded.college_id }).select('password student_name college_id college_email');
 
             if(!user) {
                 res.status(200).json({ success : false, message : 'User not found.'});
             } else {
-                let validPassword = user.comparePassword(_b.old_password);
-
+                const validPassword = await bcryptjs.compare(_b.old_password, user.password);
                 if(validPassword) {
                     user.password = req.body.new_password;
 
                     const data = await user.save();
 
-                    res.status(200).json({ success : true, message : 'Password successfully updated.'})
-
-                    // todo send Email here that, your password was reset.
+                    res.status(200).json({ success : true, message : 'Hi ' + user.student_name + ', your Password has been Updated successfully.'})
+                    const sendConfirmationMail = await Mailer.sendDM(user, 'passwordUpdated');
                 } else {
                     res.status(200).json({ success : false, message : 'Old Password is incorrect.'})
                 }
