@@ -1,5 +1,6 @@
 var mongoose = require("mongoose");
 var bcrypt = require("bcrypt-nodejs");
+const bcryptjs = require("bcryptjs");
 var titlize = require("mongoose-title-case");
 var validate = require("mongoose-validator");
 mongoose.set("useCreateIndex", true);
@@ -161,21 +162,23 @@ var userSchema = new mongoose.Schema({
   },
 });
 
-userSchema.pre("save", function (next) {
+userSchema.pre("save", async function (next) {
   var user = this;
 
-  if (!user.isModified("password")) return next();
-
-  bcrypt.hash(user.password, null, null, function (err, hash) {
-    // Store hash in your password DB.
-    if (err) {
-      return next(err);
-      //res.send('Error in hashing password');
-    } else {
-      user.password = hash;
-      next();
-    }
-  });
+  if(user.isModified("password")) {
+    this.password = await bcryptjs.hash(user.password, 12);
+  }
+  next()
+  // bcrypt.hash(user.password, null, null, function (err, hash) {
+  //   // Store hash in your password DB.
+  //   if (err) {
+  //     return next(err);
+  //     //res.send('Error in hashing password');
+  //   } else {
+  //     user.password = hash;
+  //     next();
+  //   }
+  // });
 });
 
 // Mongoose title case plugin
