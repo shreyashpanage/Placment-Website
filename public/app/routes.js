@@ -33,6 +33,12 @@ var app = angular
         authenticated: false,
       })
 
+      .when("/newlogin", {
+                templateUrl: "/app/views/authentication/newlogin.html",
+
+        authenticated: false,
+      })
+
       .when("/logout", {
         templateUrl: "/app/views/authentication/logout.html",
         authenticated: false,
