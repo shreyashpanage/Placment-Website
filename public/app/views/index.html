@@ -84,6 +84,7 @@
 
         <!-- <li><a href="/team" aria-expanded="false">Team</a></li> -->
         <li><a ng-show="main.isLoggedIn" href="http://tnp.herokuapp.com/" target="_blank" aria-expanded="false">Placement Prediction</a></li>
+        <li><a ng-show="main.isLoggedIn  && main.authorized" href="https://tnp-admin.herokuapp.com/" target="_blank" aria-expanded="false">Placement Prediction</a></li>
          <li><a ng-show="!main.authorized" href="/about" aria-expanded="falCompany Registrationse">About Us</a></li>
          <li><a ng-show="!main.authorized" href="/contact" aria-expanded="false">Contact</a></li>
         <li><a href="/placements" aria-expanded="false">Hall of Fame</a></li>
@@ -91,7 +92,7 @@
         <li><a href="/interview-experiences" aria-expanded="false" ng-show="main.isLoggedIn ">Interview Experiences</a></li>
         <!-- <li ng-show="main.isLoggedIn && main.authorized"> <a href="/file" aria-expanded="false">Upload Student
                 details</a></li> -->
-         <li><a href="https://tnp.herokuapp.com/" aria-expanded="false" ng-show="main.isLoggedIn ">Placement Prediction</a></li>
+         <!-- <li><a href="https://tnp.herokuapp.com/" aria-expanded="false" ng-show="main.isLoggedIn ">Placement Prediction</a></li> -->
                 <li><a href="/company-notification/:company_id" aria-expanded="false" ng-show="main.isLoggedIn && main.authorized">Notification Management</a></li>
                
                 
