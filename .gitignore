@@ -4,7 +4,6 @@ node_modules/
 err.log
 out.log
 package-lock.json
-/public/assets/uploads/
 daa
 new.py
 new.cpp
