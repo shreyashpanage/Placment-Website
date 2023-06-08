@@ -83,11 +83,11 @@
         
 
         <!-- <li><a href="/team" aria-expanded="false">Team</a></li> -->
-        <li><a ng-show="main.isLoggedIn" href="http://tnp.herokuapp.com/" target="_blank" aria-expanded="false">Placement Prediction</a></li>
-        <li><a ng-show="main.isLoggedIn  && main.authorized" href="https://tnp-admin.herokuapp.com/" target="_blank" aria-expanded="false">Placement Prediction</a></li>
+        <li><a ng-show="main.isLoggedIn" href="http://tnp.herokuapp.com/" target="_blank" aria-expanded="false">Predict now</a></li>
+        <li><a ng-show="main.isLoggedIn  && main.authorized" href="https://tnp-admin.herokuapp.com/" target="_blank" aria-expanded="false">Bulk Predict</a></li>
          <li><a ng-show="!main.authorized" href="/about" aria-expanded="falCompany Registrationse">About Us</a></li>
          <li><a ng-show="!main.authorized" href="/contact" aria-expanded="false">Contact</a></li>
-        <li><a href="/placements" aria-expanded="false">Hall of Fame</a></li>
+        <!-- <li><a href="/placements" aria-expanded="false">Hall of Fame</a></li> -->
         <li><a href="/notifications" aria-expanded="false" ng-show="main.isLoggedIn  && !main.authorized">All Notifications</a></li>
         <li><a href="/interview-experiences" aria-expanded="false" ng-show="main.isLoggedIn ">Interview Experiences</a></li>
         <li><a href="/company-details" aria-expanded="false" ng-show="main.isLoggedIn ">Company Details</a></li>
@@ -155,9 +155,9 @@
 
 
 
-    <header class="section-header text-center ">
+    <!-- <header class="section-header text-center ">
         <h1 class="animate__animated animate__fadeInDown heading " >TP & CG Portal</h1>
-        </header>
+        </header> -->
 
       <div class="container-fluid">
         <div ng-show="main.home">
