@@ -1,5 +1,5 @@
 {
-  "name": "TP&CG_Portal",
+  "name": "TPCG_Portal",
   "version": "1.0.0",
   "description": "Online Web Placement Portal for YCCE,Nagpur",
   "main": "server.js",
@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.1",
     "browserify": "^17.0.0",
     "convert-excel-to-json": "^1.7.0",

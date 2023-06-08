@@ -32,6 +32,9 @@ exports.getAll = async (req, res) => {
     if (filterCriteria.minCGPA) {
       query.cgpa = { $gte: Number(filterCriteria.minCGPA) };
     }
+    if (filterCriteria.minSeniorMarks) {
+      query.senior_marks = { $gte: Number(filterCriteria.minSeniorMarks) };
+    }
     if (filterCriteria.back) {
       query.back = { $lte: Number(filterCriteria.back) };
     }
@@ -55,6 +58,7 @@ exports.getAll = async (req, res) => {
         // Convert Decimal128 values to strings
         students.forEach((student) => {
           student.cgpa = student.cgpa ? student.cgpa.toString() : "";
+          student.senior_marks = student.senior_marks ? student.senior_marks.toString() : "";
           student.matric_marks = student.matric_marks
             ? student.matric_marks.toString()
             : "";

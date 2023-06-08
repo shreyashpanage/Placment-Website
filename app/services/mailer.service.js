@@ -1,11 +1,13 @@
+const Student = require("../models/user.model");
 const nodemailer = require("nodemailer");
+
 const templateService = require("../services/template.service");
 
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
     user: "kkmkittu36@gmail.com",
-    pass: "bwypowrjvaszxqdv",
+    pass: "bnbjnjstvzughktd",
   },
 });
 
@@ -28,10 +30,25 @@ async function sendDM(user, mailType) {
 async function sendDMWithSubject(user, mailType, subject, content) {
   try {
     console.log("Calling Mailer service with payload ", JSON.stringify(user));
-    console.log("user-->email", user.email);
-    const opts = templateService.getEmailOpts(user, mailType);
-    opts.subject = subject; // Set the subject from the frontend input
-    opts.html = content; // Set the content from the frontend input
+    console.log(user);
+    // user = JSON.stringify(user);
+    const email = user.email;
+    console.log("email--->", email);
+    const trimmedEmail = email.split("@")[0];
+
+    console.log(trimmedEmail);
+
+    const userName = await Student.findOne({ college_id: trimmedEmail }).select(
+      "student_name"
+    );
+    const emailData = {
+      recipient: user.email,
+      name: userName.student_name,
+      subject: subject,
+      content: content,
+    };
+    console.log("user-->data", emailData);
+    const opts = templateService.getEmailOpts(emailData, mailType);
     const data = await transporter.sendMail(opts);
     return { success: true, message: "Email sent.", data: data };
   } catch (err) {

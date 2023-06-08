@@ -78,19 +78,22 @@
             <a href='/' id="logo"> <img src="assets/images/favicon/logo.jpg" alt="homepage" class="light-logo"
                     style="width: 50px;height: 50px;" /></a>
         </li>
-      <li><a href="/" aria-expanded="false">Home</a></li>
+     <!-- <li><a href="/" aria-expanded="false">Home</a></li> -->
         <li ng-show="main.isLoggedIn"><a href="/company-registration" aria-expanded="false">Updates</a></li>
         
 
         <!-- <li><a href="/team" aria-expanded="false">Team</a></li> -->
-        <li><a href="http://tnp.herokuapp.com/" target="_blank" aria-expanded="false">Placement Prediction</a></li>
-         <li><a href="/about" aria-expanded="falCompany Registrationse">About Us</a></li><li><a href="/contact" aria-expanded="false">Contact</a></li>
-        <li><a href="/placements" aria-expanded="false">Hall of Fame</a></li>
+        <li><a ng-show="main.isLoggedIn" href="http://tnp.herokuapp.com/" target="_blank" aria-expanded="false">Predict now</a></li>
+        <li><a ng-show="main.isLoggedIn  && main.authorized" href="https://tnp-admin.herokuapp.com/" target="_blank" aria-expanded="false">Bulk Predict</a></li>
+         <li><a ng-show="!main.authorized" href="/about" aria-expanded="falCompany Registrationse">About Us</a></li>
+         <li><a ng-show="!main.authorized" href="/contact" aria-expanded="false">Contact</a></li>
+        <!-- <li><a href="/placements" aria-expanded="false">Hall of Fame</a></li> -->
         <li><a href="/notifications" aria-expanded="false" ng-show="main.isLoggedIn  && !main.authorized">All Notifications</a></li>
         <li><a href="/interview-experiences" aria-expanded="false" ng-show="main.isLoggedIn ">Interview Experiences</a></li>
+        <li><a href="/company-details" aria-expanded="false" ng-show="main.isLoggedIn ">Company Details</a></li>
         <!-- <li ng-show="main.isLoggedIn && main.authorized"> <a href="/file" aria-expanded="false">Upload Student
                 details</a></li> -->
-         <li><a href="https://tnp.herokuapp.com/" aria-expanded="false" ng-show="main.isLoggedIn ">Placement Prediction</a></li>
+         <!-- <li><a href="https://tnp.herokuapp.com/" aria-expanded="false" ng-show="main.isLoggedIn ">Placement Prediction</a></li> -->
                 <li><a href="/company-notification/:company_id" aria-expanded="false" ng-show="main.isLoggedIn && main.authorized">Notification Management</a></li>
                
                 
@@ -117,7 +120,7 @@
               </div>
             </li>
         <li ng-show="main.isLoggedIn" class="nav-item dropdown" >
-          <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="#" data-toggle="dropdown"
+          <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" style="float:right;" href="#" data-toggle="dropdown"
            aria-haspopup="true" aria-expanded="false"><img src="assets/images/profile/M.png" alt="user"
               class="img-circle" style="height: 40px; width: 40px;"></a>
                         <div class="dropdown-menu justify user-dd animated flipInY">
@@ -152,9 +155,9 @@
 
 
 
-    <header class="section-header text-center ">
+    <!-- <header class="section-header text-center ">
         <h1 class="animate__animated animate__fadeInDown heading " >TP & CG Portal</h1>
-        </header>
+        </header> -->
 
       <div class="container-fluid">
         <div ng-show="main.home">
@@ -189,49 +192,9 @@
                 Engineering <br> Wanadongri, Nagpur- 441110 <br> Maharashtra, India
               </p>
             </div>
-            <div style="color: white;" class="">Phone: +910000000000</div>
-            <div style="color: white;" class="">Email: tnpportal@ycce.in</div>
-          </div>
-      
-          <div class="new" style="display:inline-block; padding-left: 150px;">
-      
-            <h3 style="color: white ;">Useful Links</h3>
-            <ul style="color:white">
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
-            </ul>
-      
-          </div>
-      
-          <div class="new" style="display:inline-block; padding-left: 150px;">
-      
-            <h3 style="color: white ;">Useful Links</h3>
-            <ul style="color:white">
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
-            </ul>
-      
-          </div>
-      
-          <div class="new" style="display:inline-block; padding-left: 150px;">
-      
-            <h3 style="color: white ;">Useful Links</h3>
-            <ul style="color:white">
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
-            </ul>
-      
-          </div>
-      
+            <div style="color: white;" class="">Phone: +919822087970</div>
+            <div style="color: white;" class="">Email: dean_tp@ycce.edu</div>
+          </div>      
         </div>
       
       </footer>

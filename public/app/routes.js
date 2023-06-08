@@ -33,6 +33,12 @@ var app = angular
         authenticated: false,
       })
 
+      .when("/newlogin", {
+                templateUrl: "/app/views/authentication/newlogin.html",
+
+        authenticated: false,
+      })
+
       .when("/logout", {
         templateUrl: "/app/views/authentication/logout.html",
         authenticated: false,
@@ -130,6 +136,153 @@ var app = angular
         controllerAs: "previousCompanies",
       })
 
+      // Company Details 
+
+      .when("/company-details", {
+        templateUrl:
+          "/app/views/company/admin/companyDetails.html",
+        authenticated: true,
+        controller: "interviewCtrl",
+        controllerAs: "interview",
+      })
+
+      .when("/capgemini", {
+        templateUrl:
+          "/app/views/company/admin/details/capgemini.html",
+        authenticated: true,
+        controller: "interviewCtrl",
+        controllerAs: "interview",
+      })
+
+      .when("/accenture", {
+        templateUrl:
+          "/app/views/company/admin/details/accenture.html",
+        authenticated: true,
+        controller: "interviewCtrl",
+        controllerAs: "interview",
+      })
+
+      .when("/amazon", {
+        templateUrl:
+          "/app/views/company/admin/details/amazon.html",
+        authenticated: true,
+        controller: "interviewCtrl",
+        controllerAs: "interview",
+      })
+
+      
+
+      .when("/cognizant", {
+        templateUrl:
+          "/app/views/company/admin/details/cognizant.html",
+        authenticated: true,
+        controller: "interviewCtrl",
+        controllerAs: "interview",
+      })
+
+      .when("/cybageSoftware", {
+        templateUrl:
+          "/app/views/company/admin/details/cybageSoftware.html",
+        authenticated: true,
+        controller: "interviewCtrl",
+        controllerAs: "interview",
+      })
+
+      .when("/globalLogic", {
+        templateUrl:
+          "/app/views/company/admin/details/globalLogic.html",
+        authenticated: true,
+        controller: "interviewCtrl",
+        controllerAs: "interview",
+      })
+
+      .when("/ibm", {
+        templateUrl:
+          "/app/views/company/admin/details/ibm.html",
+        authenticated: true,
+        controller: "interviewCtrl",
+        controllerAs: "interview",
+      })
+
+
+      .when("/kpmg", {
+        templateUrl:
+          "/app/views/company/admin/details/kpmg.html",
+        authenticated: true,
+        controller: "interviewCtrl",
+        controllerAs: "interview",
+      })
+
+
+      .when("/lti", {
+        templateUrl:
+          "/app/views/company/admin/details/lti.html",
+        authenticated: true,
+        controller: "interviewCtrl",
+        controllerAs: "interview",
+      })
+
+      .when("/nelsionIQ", {
+        templateUrl:
+          "/app/views/company/admin/details/nelsionIQ.html",
+        authenticated: true,
+        controller: "interviewCtrl",
+        controllerAs: "interview",
+      })
+
+      .when("/p360", {
+        templateUrl:
+          "/app/views/company/admin/details/p360.html",
+        authenticated: true,
+        controller: "interviewCtrl",
+        controllerAs: "interview",
+      })
+
+
+      .when("/persistentSystems", {
+        templateUrl:
+          "/app/views/company/admin/details/persistentSystems.html",
+        authenticated: true,
+        controller: "interviewCtrl",
+        controllerAs: "interview",
+      })
+
+
+
+      .when("/principalGlobal", {
+        templateUrl:
+          "/app/views/company/admin/details/principalGlobal.html",
+        authenticated: true,
+        controller: "interviewCtrl",
+        controllerAs: "interview",
+      })
+
+      .when("/pwc", {
+        templateUrl:
+          "/app/views/company/admin/details/pwc.html",
+        authenticated: true,
+        controller: "interviewCtrl",
+        controllerAs: "interview",
+      })
+
+      .when("/siemens", {
+        templateUrl:
+          "/app/views/company/admin/details/siemens.html",
+        authenticated: true,
+        controller: "interviewCtrl",
+        controllerAs: "interview",
+      })
+
+      .when("/tcs", {
+        templateUrl:
+          "/app/views/company/admin/details/tcs.html",
+        authenticated: true,
+        controller: "interviewCtrl",
+        controllerAs: "interview",
+      })
+
+      
+
       // Interview Experiences Routes
       .when("/interview-experiences", {
         templateUrl:
@@ -138,6 +291,8 @@ var app = angular
         controller: "interviewCtrl",
         controllerAs: "interview",
       })
+
+       
 
       .when("/pending-experiences", {
         templateUrl:
