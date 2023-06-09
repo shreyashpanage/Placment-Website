@@ -1,5 +1,5 @@
 const from = "kkmkittu36@gmail.com";
-const baseUrl = "http://127.0.0.1:8080";
+const baseUrl = "https://tpncg-portal.onrender.com";
 const email_signature =
   "<br><br>With Regards.<br><br>Dr. Gauri Dhopavkar<br>Dean, Training & Placement<br>YCCE Nagpur<br>+911234567890";
 
