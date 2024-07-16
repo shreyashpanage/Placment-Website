@@ -371,13 +371,14 @@ angular
     app.downloadCSV = function () {
       let csvContent = "data:text/csv;charset=utf-8,";
       let headers = [
-        "Name",
         "Email",
+        "Name",
         "Department",
         "Passout Batch",
         "CGPA",
         "Back",
-        "Matric Marks",
+        "10th %",
+        "12th %",
         "Placement Status",
         "Contact Number",
         "Resume URL",
@@ -385,13 +386,14 @@ angular
       csvContent += headers.join(",") + "\r\n";
       $scope.students.forEach(function (student) {
         let row = [];
+        row.push(student.college_id + "@ycce.in");
         row.push(student.student_name);
-        row.push(student.college_email);
         row.push(student.department);
         row.push(student.passout_batch);
         row.push(student.cgpa); // Convert cgpa to string
         row.push(student.Back);
         row.push(student.matric_marks); // Convert matric_marks to string
+        row.push(student.senior_marks);
         row.push(student.placement_status);
         row.push(student.contact_no);
         row.push(student.resume_url);
@@ -513,7 +515,7 @@ angular
         if (data.data.success) {
           // Uploaded Resume
           app.resumeUploadSuccessMsg = data.data.message;
-          app.resumeUploadLoading = false;
+          app.resumeUploadLoading = false;66
           getUserProfileFunction();
         } else {
           // Something went wrong!

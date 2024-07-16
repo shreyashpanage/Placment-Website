@@ -178,7 +178,7 @@
           </div>
           <div class="form-row">
             <div class="form-group">
-              <label for="back">Minimum Back:</label>
+              <label for="back">Minimum Year Gap:</label>
               <input
                 type="number"
                 id="back"
@@ -189,7 +189,7 @@
               />
             </div>
             <div class="form-group">
-              <label for="matric_marks">Minimum Matric Marks:</label>
+              <label for="matric_marks">Minimum 10th%:</label>
               <input
                 type="number"
                 id="matric_marks"
@@ -199,20 +199,31 @@
                 max="100"
               />
             </div>
+            <div class="form-group">
+              <label for="senior_marks">Minimum 12th%:</label>
+              <input
+                type="number"
+                id="senior_marks"
+                name="senior_marks"
+                ng-model="filterCriteria.minSeniorMarks"
+                min="1"
+                max="100"
+              />
+            </div>
+            <div class="form-group">
+              <label for="placement_status">Placement Status:</label>
+              <select
+                id="placement_status"
+                name="placement_status"
+                ng-model="filterCriteria.placementStatus"
+              >
+                <option value="">Select placement status</option>
+                <option value="Unplaced">Unplaced</option>
+                <option value="Placed">Placed</option>
+              </select>
+            </div>
           </div>
 
-          <div class="form-row">
-            <label for="placement_status">Placement Status:</label>
-            <select
-              id="placement_status"
-              name="placement_status"
-              ng-model="filterCriteria.placementStatus"
-            >
-              <option value="">Select placement status</option>
-              <option value="Unplaced">Unplaced</option>
-              <option value="Placed">Placed</option>
-            </select>
-          </div>
           <div class="form-row">
             <label for="company">Company:</label>
             <input
@@ -245,7 +256,6 @@
               <th>Name</th>
               <th>Department</th>
               <th>Passout Batch</th>
-              <th>Placement Status</th>
             </tr>
           </thead>
           <tbody>
@@ -253,7 +263,6 @@
               <td>{{ student.student_name }}</td>
               <td>{{ student.department }}</td>
               <td>{{ student.passout_batch }}</td>
-              <td>{{ student.placement_status }}</td>
             </tr>
           </tbody>
         </table>

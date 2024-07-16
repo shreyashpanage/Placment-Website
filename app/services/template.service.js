@@ -1,5 +1,5 @@
 const from = "kkmkittu36@gmail.com";
-const baseUrl = "http://127.0.0.1:8080";
+const baseUrl = "https://tpncg-portal.onrender.com";
 const email_signature =
   "<br><br>With Regards.<br><br>Dr. Gauri Dhopavkar<br>Dean, Training & Placement<br>YCCE Nagpur<br>+911234567890";
 
@@ -64,7 +64,7 @@ exports.getEmailOpts = (data, mailType) => {
     case "approveInterviewExperience":
       return {
         from: from,
-        to: data.author_id + "@mnit.ac.in",
+        to: data.author_id + "@ycce.in",
         subject: "Yay! We have published your article " + data.title,
         text:
           "Hello " +
@@ -163,46 +163,47 @@ exports.getEmailOpts = (data, mailType) => {
     case "notification":
       return {
         from: from,
-        to: data.email,
-        subject: data.notification_subject,
+        to: data.recipient,
+        subject: data.subject,
         html: `<html>
-                  <head>
-                    <style>
-                      body {
-                        font-family: Arial, sans-serif;
-                        color: #333;
-                      }
-                      .notification {
-                        border: 1px solid #ccc;
-                        padding: 20px;
-                        background-color: #f9f9f9;
-                      }
-                      .notification h2 {
-                        color: #555;
-                      }
-                      .notification p {
-                        margin-bottom: 10px;
-                      }
-                      .notification-footer {
-                        margin-top: 20px;
-                        font-size: 12px;
-                        color: #888;
-                      }
-                    </style>
-                  </head>
-                  <body>
-                    <div class="notification">
-                      <h2>${data.notification_subject}</h2>
-                      <p>${data.notification_text}</p>
-                    </div>
-                    <div class="notification-footer">
-                      <p>Regards,</p>
-                      <p>Dr. Gauri Dhopavkar</p>
-                      <p>Dean, Training & Placement</p>
-                      <p>YCCE Nagpur</p>
-                    </div>
-                  </body>
-                </html>`,
+            <head>
+              <style>
+                body {
+                  font-family: Arial, sans-serif;
+                  color: #333;
+                }
+                .notification {
+                  border: 1px solid #ccc;
+                  padding: 20px;
+                  background-color: #f9f9f9;
+                }
+                .notification h2 {
+                  color: #555;
+                }
+                .notification p {
+                  margin-bottom: 10px;
+                }
+                .notification-footer {
+                  margin-top: 20px;
+                  font-size: 12px;
+                  color: #888;
+                }
+              </style>
+            </head>
+            <body>
+              <div class="notification">
+                <h2>${data.subject}</h2>
+                <p>Dear ${data.name},</p>
+                <p>${data.content}</p>
+              </div>
+              <div class="notification-footer">
+                <p>Regards,</p>
+                <p>Dr. Gauri Dhopavkar</p>
+                <p>Dean, Training & Placement</p>
+                <p>YCCE Nagpur</p>
+              </div>
+            </body>
+          </html>`,
       };
       break;
 
