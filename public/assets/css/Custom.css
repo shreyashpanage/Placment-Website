@@ -562,3 +562,12 @@ th {
 tr:hover {
   background-color: #f5f5f5;
 }
+
+.contact-card {
+  background-color: rgba(31, 67, 67, 0.6);
+  color: rgb(253, 251, 251); /* You can adjust this color based on your design */
+}
+
+.certificates-card a {
+  color: black; /* Ensure links are readable on the card */
+}

@@ -29,37 +29,75 @@
 <!--Loading End -->
 
 <!-- Skill Counts Table -->
-<div ng-show="skill.fetchedSkillCounts">
-  <div class="row">
-      <div class="col-lg-12">
-          <div class="card cc-widget">
-              <div class="card-body">
-                  <form class="form-material">
-                      <div class="form-group" style="margin-bottom: 0px;">
-                          <input type="text" class="form-control form-control-line" placeholder="Search skills..." ng-model="searchSkill">
-                          <br><span class="text-primary" ng-show="searchSkill">{{ filteredSkills.length }} Results found</span>
-                      </div>
-                  </form>
-              </div>
-          </div>
-          <div class="card cc-widget">
-              <div class="card-body">
-                  <table class="table table-striped">
-                      <thead>
-                          <tr>
-                              <th>Skill</th>
-                              <th>Count</th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                          <tr ng-repeat="skillCount in filteredSkills = (skill.skillCounts | filter: searchSkill)">
-                              <td>{{ skillCount.skill }}</td>
-                              <td>{{ skillCount.count }}</td>
-                          </tr>
-                      </tbody>
-                  </table>
-              </div>
-          </div>
+<div ng-show="skill.fetchedSkillCounts" class="row">
+    <div class="col-lg-8">
+      <div class="card cc-widget">
+        <div class="card-body">
+          <h4 class="card-title">Top 10 Skills</h4>
+          <canvas id="topSkillsChart"></canvas>
+        </div>
       </div>
+    </div>
+    <div class="col-lg-4">
+      <!-- Contact Details Card -->
+      <div class="card contact-card">
+        <div class="card-body">
+          <h5 class="card-title">Contact Details</h5>
+          <p class="card-text">
+            For more details, contact Mr. Neeraj Wakhre, TPO YCCE by mailing at <a style="color: azure;" href="mailto:dean@ycce.in">dean@ycce.in</a>.
+          </p>
+        </div>
+      </div>
+      
+      <!-- Certificates Card with Pie Chart -->
+      <div class="card certificates-card">
+        <div class="card-body">
+          <h5 class="card-title">Certificates</h5>
+          <canvas id="certificatesChart"></canvas>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+  
+  
+
+<div ng-show="skill.fetchedSkillCounts">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card cc-widget">
+          <div class="card-body">
+            <form class="form-material">
+              <div class="form-group" style="margin-bottom: 0px;">
+                <input type="text" class="form-control form-control-line" placeholder="Search skills..." ng-model="searchSkill">
+                <br><span class="text-primary" ng-show="searchSkill">{{ filteredSkills.length }} Results found</span>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="card cc-widget">
+          <div class="card-body">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Skill</th>
+                  <th>Count</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="skillCount in filteredSkills = (skill.skillCounts | filter: searchSkill)">
+                  <td>{{ skillCount.skill }}</td>
+                  <td>{{ skillCount.count }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="pagination-controls">
+          <button ng-disabled="currentPage <= 1" ng-click="changePage(currentPage - 1)">Previous</button>
+          <span>Page {{ currentPage }} of {{ totalPages }}</span>
+          <button ng-disabled="currentPage >= totalPages" ng-click="changePage(currentPage + 1)">Next</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

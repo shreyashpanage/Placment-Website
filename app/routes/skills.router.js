@@ -19,9 +19,19 @@ const clearSkillCounts = async () => {
 };
 
 const aggregateSkills = async () => {
+  // Aggregation pipeline to handle comma-separated skills
   return await Skill.aggregate([
-    { $group: { _id: "$skills", count: { $sum: 1 } } },
+    // Split skills into an array
+    { $project: { skillArray: { $split: ["$skills", ","] } } },
+    // Unwind the array to count each skill individually
+    { $unwind: "$skillArray" },
+    // Trim whitespace from skills
+    { $project: { skillArray: { $trim: { input: "$skillArray" } } } },
+    // Group by skill and count occurrences
+    { $group: { _id: "$skillArray", count: { $sum: 1 } } },
+    // Project the results to match the SkillCount schema
     { $project: { skill: "$_id", count: 1, _id: 0 } },
+    // Sort by count in descending order
     { $sort: { count: -1 } }
   ]);
 };
