@@ -20,6 +20,8 @@ angular
       return $http.post("/api/announcement/add", announcementData);
     };
 
+    
+
     // post company to db
     adminFactory.postCompanyDetails = function (newCompanyData) {
       return $http.post("/api/company/add", newCompanyData);

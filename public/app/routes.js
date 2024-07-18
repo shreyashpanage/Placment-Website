@@ -438,6 +438,12 @@ var app = angular
         controllerAs: "emailGroupsManagement",
       })
 
+      .when("/skills-finder", {
+        templateUrl: "/app/views/skills/graphs.html",
+        controller: 'SkillController',
+
+      })
+
       // User Profile
       // 1. Student
       .when("/profile", {

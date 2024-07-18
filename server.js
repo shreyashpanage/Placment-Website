@@ -3,7 +3,7 @@ let app = express(); // Setup Express App
 
 require("dotenv").config(); // Environment Variables
 let morgan = require("morgan"); // middleware to log http requests
-let port = process.env.PORT || 8080; // localhost : PORT=8080 nodemon server.js
+let port = process.env.PORT || 3000; // localhost : PORT=8080 nodemon server.js
 let bodyParser = require("body-parser");
 const mongodbService = require("./app/services/mongodb.service"); // MongoDB Service
 app.use(morgan("dev"));
@@ -30,6 +30,9 @@ app.use("/api/upload", require("./app/routes/upload.router"));
 app.use("/api/redFlag", require("./app/routes/redFlag.router"));
 app.use("/api/group", require("./app/routes/group.router"));
 app.use("/file", require("./app/routes/file.router"));
+app.use('/api/skills',require('./app/routes/skills.router'));
+
+
 
 app.use(express.static(__dirname + "/public"));
 global.__basedir = __dirname; // Globally Declaring basedir to use in API files

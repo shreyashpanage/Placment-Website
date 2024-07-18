@@ -12,4 +12,4 @@ router.post('/add', jwtMiddleware.verify, authMiddleware.ensureLoggedIn, intervi
 router.post('/changeStatus', jwtMiddleware.verify, authMiddleware.ensureOfficialPlacementTeam, interviewController.changeStatus);
 router.post('/edit', jwtMiddleware.verify, authMiddleware.ensureOfficialPlacementTeam, interviewController.edit);
 
-module.exports = router;
+module.exports = router; 

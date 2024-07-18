@@ -11,6 +11,7 @@
     <meta name="author" content="T&P Developers">
     <meta name="keywords"
         content="Training & Placement Portal, YCCE Nagpur, IIT Wanadongri, Campus Recruitment, Yeshwantrao Chavan College of Engineering">
+
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/images/favicon/logo.jpg" />
     <!-- Title Meta tag -->
@@ -19,7 +20,7 @@
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
@@ -47,6 +48,8 @@
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-144843888-1"></script>
+    <!-- <script src="./skills/app.js"></script> -->
+    
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
@@ -80,7 +83,9 @@
         </li>
      <!-- <li><a href="/" aria-expanded="false">Home</a></li> -->
         <li ng-show="main.isLoggedIn"><a href="/company-registration" aria-expanded="false">Updates</a></li>
-        
+       
+        <li ng-show="main.isLoggedIn"><a href=" /skills-finder" aria-expanded="false">Skill</a></li>
+
 
         <!-- <li><a href="/team" aria-expanded="false">Team</a></li> -->
         <li><a ng-show="main.isLoggedIn" href="http://tnp.herokuapp.com/" target="_blank" aria-expanded="false">Predict now</a></li>
@@ -119,6 +124,7 @@
 
               </div>
             </li>
+            
         <li ng-show="main.isLoggedIn" class="nav-item dropdown" >
           <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" style="float:right;" href="#" data-toggle="dropdown"
            aria-haspopup="true" aria-expanded="false"><img src="assets/images/profile/M.png" alt="user"
@@ -231,6 +237,7 @@
     <script src="/app/controllers/mainCtrl.js"></script>
     <script src="/app/controllers/adminCtrl.js"></script>
     <script src="/app/controllers/emailCtrl.js"></script>
+    <script src="/app/controllers/skill.controller.js"></script>
 
     <!-- Angular Custom File Model Directives -->
     <script src="app/directives/fileModel.js"></script>
@@ -240,6 +247,7 @@
     <script src="/app/services/studentServices.js"></script>
     <script src="/app/services/authServices.js"></script>
     <script src="app/services/uploadFileService.js"></script>
+    <script src="app/services/skill.service.js"></script>
 
     <!-- =====New Filter js -->
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script><script src="/public/assets/js/index.js"></script>

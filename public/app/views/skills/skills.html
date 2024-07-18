@@ -1,0 +1,65 @@
+<!-- Page Header -->
+<div class="row page-titles">
+    <div class="col-lg-12">
+        <div class="card text-white bg-dark">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h3>Skill Counts</h3>
+                        <h6 class="font-light m-t-0">View the counts of various skills among students</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Page Header End -->
+
+<!-- Loading -->
+<div class="row" ng-show="!skill.fetchedSkillCounts">
+    <div class="col-md-12">
+        <div class="card-body text-center">
+            <div class="spinner-grow" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <!-- Add more spinners as in your interview.html if desired -->
+        </div>
+    </div>
+</div>
+<!--Loading End -->
+
+<!-- Skill Counts Table -->
+<div ng-show="skill.fetchedSkillCounts">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card cc-widget">
+                <div class="card-body">
+                    <form class="form-material">
+                        <div class="form-group" style="margin-bottom: 0px;">
+                            <input type="text" class="form-control form-control-line" placeholder="Search skills..." ng-model="searchSkill">
+                            <br><span class="text-primary" ng-show="searchSkill">{{ filteredSkills.length }} Results found</span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="card cc-widget">
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Skill</th>
+                                <th>Count</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="skillCount in filteredSkills = (skill.skillCounts | filter: searchSkill)">
+                                <td>{{ skillCount.skill }}</td>
+                                <td>{{ skillCount.count }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

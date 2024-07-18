@@ -1,0 +1,62 @@
+college_id,skills
+123456,Machine Learning,Data Analysis,Python Programming,Cloud Computing
+789012,CAD Design,3D Modeling,Structural Analysis
+345678,Circuit Design,Embedded Systems,PCB Layout,IoT
+901234,Web Development,JavaScript,Database Management,UI/UX Design
+567890,Robotics,Computer Vision,C++ Programming
+234567,Fluid Dynamics,Thermodynamics,MATLAB,CAE
+678901,Network Security,Ethical Hacking,Cryptography
+890123,Geotechnical Engineering,AutoCAD,Project Management
+456789,Big Data Analytics,Natural Language Processing,Deep Learning
+012345,VLSI Design,Digital Signal Processing,Verilog HDL
+135790,Mechatronics,PLC Programming,Industrial Automation
+246802,Environmental Engineering,Waste Management,GIS
+369258,Full Stack Development,DevOps,Agile Methodologies
+147258,Materials Science,Composite Materials,Finite Element Analysis
+258369,Power Systems,Renewable Energy,Smart Grid Technologies
+369147,Software Testing,Quality Assurance,Selenium
+741852,BIM,Construction Management,Cost Estimation
+852963,Machine Design,CNC Programming,Lean Manufacturing
+963741,Data Visualization,Statistical Analysis,R Programming
+159753,Microcontroller Programming,Sensor Integration,Real-time Systems
+753951,Artificial Intelligence,TensorFlow,Keras,Scikit-learn
+246813,Structural Engineering,Seismic Analysis,Bridge Design
+975310,Mobile App Development,Swift,Kotlin,React Native
+864209,Aerospace Engineering,Aerodynamics,Propulsion Systems
+531642,Biomechanics,Medical Imaging,Prosthetics Design
+197532,Petroleum Engineering,Reservoir Simulation,Well Logging
+086421,Nanotechnology,Microfabrication,Nanoelectronics
+310975,Control Systems,Feedback Control,System Identification
+642087,Bioinformatics,Genomics,Protein Modeling
+875309,Telecommunications,5G Networks,Wireless Communications
+420864,Automotive Engineering,Vehicle Dynamics,Hybrid Propulsion
+753086,Quantum Computing,Quantum Algorithms,Quantum Cryptography
+198765,Photonics,Laser Technology,Optical Communication
+654321,Cybersecurity,Penetration Testing,Malware Analysis
+987654,Renewable Energy,Solar Cell Design,Wind Turbine Optimization
+321098,Robotics Process Automation,UiPath,Blue Prism
+765432,Supply Chain Management,Logistics Optimization,Inventory Control
+109876,Augmented Reality,Virtual Reality,Unity 3D
+543210,Blockchain,Smart Contracts,Cryptocurrency
+876543,Industrial IoT,SCADA Systems,Machine-to-Machine Communication
+432109,Game Development,3D Graphics,Physics Engines
+123456,Machine Learning,Data Analysis,Python Programming,Cloud Computing
+789012,CAD Design,3D Modeling,Structural Analysis
+345678,Circuit Design,Embedded Systems,PCB Layout,IoT
+901234,Web Development,JavaScript,Database Management,UI/UX Design
+567890,Robotics,Computer Vision,C++ Programming
+234567,Fluid Dynamics,Thermodynamics,MATLAB,CAE
+678901,Network Security,Ethical Hacking,Cryptography
+890123,Geotechnical Engineering,AutoCAD,Project Management
+456789,Big Data Analytics,Natural Language Processing,Deep Learning
+012345,VLSI Design,Digital Signal Processing,Verilog HDL
+135790,Mechatronics,PLC Programming,Industrial Automation
+246802,Environmental Engineering,Waste Management,GIS
+369258,Full Stack Development,DevOps,Agile Methodologies
+147258,Materials Science,Composite Materials,Finite Element Analysis
+258369,Power Systems,Renewable Energy,Smart Grid Technologies
+369147,Software Testing,Quality Assurance,Selenium
+741852,BIM,Construction Management,Cost Estimation
+852963,Machine Design,CNC Programming,Lean Manufacturing
+963741,Data Visualization,Statistical Analysis,R Programming
+159753,Microcontroller Programming,Sensor Integration,Real-time Systems
