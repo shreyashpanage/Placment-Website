@@ -1,103 +1,118 @@
 <!-- Page Header -->
 <div class="row page-titles">
   <div class="col-lg-12">
-      <div class="card text-white bg-dark">
-          <div class="card-body">
-              <div class="row">
-                  <div class="col-12 text-center">
-                      <h3>Skill Counts</h3>
-                      <h6 class="font-light m-t-0">View the counts of various skills among students</h6>
-                  </div>
-              </div>
+    <div class="card text-white bg-dark">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-12 text-center">
+            <h3>Skill Counts</h3>
+            <h6 class="font-light m-t-0">View the counts of various skills among students</h6>
           </div>
+        </div>
       </div>
+    </div>
   </div>
 </div>
-<!-- Page Header End -->
 
-<!-- Loading -->
-<div class="row" ng-show="!skill.fetchedSkillCounts">
-  <div class="col-md-12">
-      <div class="card-body text-center">
-          <div class="spinner-grow" role="status">
-              <span class="sr-only">Loading...</span>
-          </div>
-          <!-- Add more spinners as in your interview.html if desired -->
-      </div>
-  </div>
-</div>
-<!--Loading End -->
-
-<!-- Skill Counts Table -->
-<div ng-show="skill.fetchedSkillCounts" class="row">
-    <div class="col-lg-8">
-      <div class="card cc-widget">
-        <div class="card-body">
-          <h4 class="card-title">Top 10 Skills</h4>
+<!-- Main Content -->
+<div class="row" ng-show="skill.fetchedSkillCounts">
+  <div class="col-lg-8">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Top 10 Skills</h4>
+        <div class="chart-container">
           <canvas id="topSkillsChart"></canvas>
         </div>
       </div>
     </div>
-    <div class="col-lg-4">
-      <!-- Contact Details Card -->
-      <div class="card contact-card">
-        <div class="card-body">
-          <h5 class="card-title">Contact Details</h5>
-          <p class="card-text">
-            For more details, contact Mr. Neeraj Wakhre, TPO YCCE by mailing at <a style="color: azure;" href="mailto:dean@ycce.in">dean@ycce.in</a>.
-          </p>
-        </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="card contact-card">
+      <div class="card-body">
+        <h5 class="card-title">Contact Details</h5>
+        <p class="card-text">
+          For more details, contact Mr. Neeraj Wakhre, TPO YCCE by mailing at <a href="mailto:dean@ycce.in">dean@ycce.in</a>.
+        </p>
       </div>
-      
-      <!-- Certificates Card with Pie Chart -->
-      <div class="card certificates-card">
-        <div class="card-body">
-          <h5 class="card-title">Certificates</h5>
+    </div>
+    <div class="card certificates-card">
+      <div class="card-body">
+        <h5 class="card-title">Certificates</h5>
+        <div class="chart-container">
           <canvas id="certificatesChart"></canvas>
         </div>
       </div>
     </div>
-  </div>
-  
-  
-
-<div ng-show="skill.fetchedSkillCounts">
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="card cc-widget">
-          <div class="card-body">
-            <form class="form-material">
-              <div class="form-group" style="margin-bottom: 0px;">
-                <input type="text" class="form-control form-control-line" placeholder="Search skills..." ng-model="searchSkill">
-                <br><span class="text-primary" ng-show="searchSkill">{{ filteredSkills.length }} Results found</span>
-              </div>
-            </form>
-          </div>
-        </div>
-        <div class="card cc-widget">
-          <div class="card-body">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>Skill</th>
-                  <th>Count</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr ng-repeat="skillCount in filteredSkills = (skill.skillCounts | filter: searchSkill)">
-                  <td>{{ skillCount.skill }}</td>
-                  <td>{{ skillCount.count }}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div class="pagination-controls">
-          <button ng-disabled="currentPage <= 1" ng-click="changePage(currentPage - 1)">Previous</button>
-          <span>Page {{ currentPage }} of {{ totalPages }}</span>
-          <button ng-disabled="currentPage >= totalPages" ng-click="changePage(currentPage + 1)">Next</button>
+    <div class="card branch-card" ng-if="selectedSkill">
+      <div class="card-body">
+        <h5 class="card-title">Branch Distribution for {{selectedSkill.skill}}</h5>
+        <div class="chart-container">
+          <canvas id="branchChart"></canvas>
         </div>
       </div>
     </div>
   </div>
-  
+</div>
+
+<div class="row" ng-show="skill.fetchedSkillCounts">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-body">
+        <form class="form-material">
+          <div class="form-group">
+            <input type="text" class="form-control form-control-line" placeholder="Search skills..." ng-model="searchSkill">
+            <span class="text-primary" ng-show="searchSkill">{{ filteredSkills.length }} Results found</span>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Skill</th>
+                <th>Count</th>
+                <th>Branch Distribution</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="skillCount in filteredSkills = (skill.skillCounts | filter: searchSkill)">
+                <td>{{ skillCount.skill }}</td>
+                <td>{{ skillCount.count }}</td>
+                <td>
+                  <ul class="list-unstyled">
+                    <li ng-repeat="branchCount in skillCount.branchCounts">
+                      {{ branchCount.branch }}: {{ branchCount.count }}
+                    </li>
+                  </ul>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .card {
+    margin-bottom: 20px;
+  }
+  .chart-container {
+    position: relative;
+    height: 300px;
+    width: 100%;
+  }
+  .table-responsive {
+    overflow-x: auto;
+  }
+  @media (max-width: 768px) {
+    .col-lg-8, .col-lg-4 {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }
+</style>
