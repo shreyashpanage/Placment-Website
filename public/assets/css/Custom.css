@@ -37,6 +37,24 @@ img {
   border-radius: 55px;
 }
 
+/* SHUBHAM BURDE ---- START TESTOMONIAL TEXT */
+.testimonials-heading {
+  color: #6466eb;  /* Change color to blue */
+  font-size: 48px; /* Larger font size */
+  text-align: left; /* Align the heading to the left */
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+/* Responsive Design for Testimonials Heading */
+@media (max-width: 768px) {
+  .testimonials-heading {
+    font-size: 48px; /* Adjust font size for smaller screens */
+    margin-left: 5px;
+  }
+}
+/* SHUBHAM BURDE ---- END TESTOMONIAL TEXT */
+
 .profile {
   box-sizing: border-box;
   margin: 0;
@@ -152,6 +170,118 @@ img {
   color: #fff;
   padding: 20px;
 } */
+
+/* Footer Section - Shubham Burde */
+
+.footer {
+  background-color: #6466eb;
+  color: #fff;
+
+}
+
+.footer-container {
+  max-width: 1170px;
+  /* background-color: red; */
+  margin: auto;
+}
+
+ul {
+  list-style: none;
+}
+
+.footer-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.footer-col {
+  width: 33%;
+  padding: 0 15px;
+}
+
+.footer-col ul {
+  padding-left: 5px;
+}
+.footer-col h4 {
+  font-size: 18px;
+  color: #ffffff;
+  text-transform: capitalize;
+  margin-bottom: 35px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  position: relative;
+  line-height: 1.5;
+}
+
+.footer-col h4::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  background-color: #ddcfd4;
+  height: 2px;
+  box-sizing: border-box;
+  width: 50px;
+}
+
+.footer-col ul li:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.footer-col ul li {
+  font-size: 16px;
+  text-transform: capitalize;
+  /* color: #ffffff; */
+  text-decoration: none;
+  font-weight: 350;
+  color: #e7e4e4;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.footer-col ul li:hover {
+  color: #ffffff;
+  padding-left: 6px;
+}
+
+.footer-col .social-links a {
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  background-color: rgba(255,255,255,0.2);
+  margin: 0 10px 10px 0;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 50%;
+  color: #ffffff;
+  transition: all 0.5s ease;
+} 
+
+.footer-col .social-links a:hover {
+  color: #24262b;
+  background-color: #ffffff;
+}
+
+
+/* Responsive */
+@media(max-width: 767px) {
+  .footer-col {
+    width: 50%;
+    margin-bottom: 0 30px;
+
+  }
+}
+@media(max-width: 574px) {
+  .footer-col {
+    width: 100%;
+    /* margin-bottom: 0 30px; */
+
+  }
+}
+
+
+
+/* End Footer Section  */
 
 .content {
   width: 24%;
@@ -432,6 +562,68 @@ input[type="submit"] {
   color: #fff;
   border: none
 }
+
+/* START VIDEO SECTION    -----   SHUBHAM BURDE */
+
+section {
+  padding: 20px;
+  background-color: #f9f9f9;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  padding-left: 53px;
+}
+
+.video-scroll-container {
+  display: flex;
+  flex-wrap: wrap; /* Ensures that videos wrap to the next row on smaller screens */
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Video iframe styles */
+iframe {
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 460px; /* Default size for large screens */
+  height: 260px; /* Reduced height for better aspect ratio */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+iframe:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  iframe {
+    width: 90%; /* Take up 90% of screen width for tablets/laptops */
+    height: auto; /* Maintain aspect ratio */
+  }
+}
+
+@media (max-width: 768px) {
+  .video-scroll-container {
+    flex-direction: column; /* Stack videos vertically on smaller screens */
+    align-items: center; /* Center align them */
+  }
+
+  iframe {
+    width: 100%; /* Full width on tablets and phones */
+    height: auto; /* Keep the aspect ratio */
+  }
+}
+
+@media (max-width: 480px) {
+  iframe {
+    width: 100%; /* Full width for mobile devices */
+    height: auto; /* Maintain aspect ratio */
+  }
+}
+
+/* END VIDEO SECTION    -----   SHUBHAM BURDE */
+
 
 .gallery {
   position: relative;
