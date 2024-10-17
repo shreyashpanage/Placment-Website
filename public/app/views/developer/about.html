@@ -1,3 +1,56 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Test</title>
+    <style>
+        .abouttitle {
+            font-size: 2em;
+        }
+
+        .innertext p {
+            font-size: 1.1em;
+            padding: 0 20px;
+            color: black;
+        }
+
+        /* For tablets */
+        @media (max-width: 768px) {
+            .abouttitle {
+                font-size: 1.75em;
+                padding: auto;
+                display: flex;
+                justify-content: flex-start;
+                width: 60%;
+            }
+
+            .innertext p {
+                font-size: 1em;
+                padding: 0 10px;
+                width: 80%;
+            }
+        }
+
+        /* For mobile */
+        @media (max-width: 480px) {
+            .abouttitle {
+                font-size: 1.5em;
+                padding: auto;
+                display: flex;
+                justify-content: flex-start;
+                width: 50%;
+            }
+
+            .innertext p {
+                font-size: 0.95em;
+                padding: 0 5px;
+                /* Color change for testing */
+                width: 50%;
+            }
+        }
+    </style>
+</head>
+
 <div class="container">
     <!-- <div style="padding-top:25px ;padding-bottom:25px;">
         <h2 style=" padding-top:25px ;padding-bottom:25px; border-radius: 55px;" class="heading">About Training &
